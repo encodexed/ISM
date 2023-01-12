@@ -78,8 +78,6 @@ const resetAll = async () => {
         lastName: 'Chan',
         pianoGrade: '8th grade comprehensive',
         theoryGrade: 'none',
-        day: 'Monday',
-        time: '3:30pm',
         dateOfBirth: '2010-05-23',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -91,8 +89,6 @@ const resetAll = async () => {
         lastName: 'Chan',
         pianoGrade: 'none',
         theoryGrade: 'none',
-        day: 'Saturday',
-        time: '10:15am',
         dateOfBirth: '2003-11-23',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -104,8 +100,6 @@ const resetAll = async () => {
         lastName: 'Oksuz',
         pianoGrade: '3rd grade piano for leisure',
         theoryGrade: 'none',
-        day: 'Wednesday',
-        time: '4:00pm',
         dateOfBirth: '1999-09-16',
         gender: 'Male',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -117,8 +111,6 @@ const resetAll = async () => {
         lastName: 'Flunt',
         pianoGrade: '3rd grade comprehensive',
         theoryGrade: 'none',
-        day: 'Thursday',
-        time: '9:30am',
         dateOfBirth: '2004-10-04',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -130,8 +122,6 @@ const resetAll = async () => {
         lastName: 'Fang',
         pianoGrade: 'none',
         theoryGrade: 'none',
-        day: 'Saturday',
-        time: '12:00pm',
         dateOfBirth: '2002-05-24',
         gender: 'Male',
         notes: 'Must be scheduled on the same day as her sisters'
