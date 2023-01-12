@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') %> 
+
+<div class="text-center">
+    <h1>Admin Timetable</h1>
+    <div class="mb-3">
+        <%- include('../partials/adminNav') %>
+    </div>
+    <p>Admins can adjust the timetable here.</p>
+</div>
+
+<table id="adminTimetable" class="table table-hover table-responsive w-auto">
+    <!-- javascript appends here -->
+</table>
+
+<script src="/javascripts/makeTimetable.js" type="text/javascript"></script>
+<script> makeTimetable(document.getElementById('adminTimetable'), 
+    <%-JSON.stringify(musicPrograms)%>);
+</script>

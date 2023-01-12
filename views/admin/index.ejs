@@ -1,0 +1,120 @@
+<% layout('layouts/boilerplate') %> 
+
+<h1 class="display-2 text-center">Admin Dashboard</h1>
+<div class="mb-3">
+    <%- include('../partials/adminNav') %>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <h3 class="text-center mb-3">Music Programs DB</h3>
+        <div class="row">
+            <div class="col-4 offset-4">
+                <a class="btn btn-sm btn-success mb-3" href="/admin/music_program/add_program">Add Program</a>
+            </div>
+        </div>
+        <ol>
+            <% for(let musicProgram of musicPrograms) { %> 
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= musicProgram.title %></h5>
+                                <small>
+                                    <p class="card-text">
+                                        Day: <strong><%= musicProgram.day %></strong><br>
+                                        Time: <strong><%= musicProgram.time %></strong><br>
+                                        Duration: <%= musicProgram.duration %><br>
+                                        Teacher: <%= musicProgram.teacher %><br>
+                                        Room: <%= musicProgram.room %><br>
+                                        Notes: <%= musicProgram.notes %>
+                                    </p>
+                                    <p>
+                                        <strong>Enrolled:</strong> <%= musicProgram.enrolled.length %><br>
+                                        <% if (musicProgram.enrolled.length !== 0) { %>
+                                            <% for(let student of musicProgram.enrolled) { %>
+                                                - <%= student.fullName %><br>
+                                            <% } %>
+                                        <% } %>
+                                    </p>
+                                </small>
+                                <a class="btn btn-sm btn-info" href="<%= `/admin/music_program/${musicProgram._id}/manage_students` %>">Manage Students</a>
+                                <a class="btn btn-sm btn-warning" href="<%= `/admin/music_program/${musicProgram._id}/edit` %>">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %> 
+        </ol>
+    </div>
+
+    <div class="col-4">
+        <h3 class="text-center mb-3">Parents DB</h3>
+        <div class="row">
+            <div class="col-4 offset-4">
+                <a class="btn btn-sm btn-success mb-3" href="/admin/parent/add_parent">Add Parent</a>
+            </div>
+        </div>
+        <ol>
+            <% for(let parent of parents) { %> 
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= `${parent.firstName} ${parent.lastName}` %></h5>
+                                <p class="card-text text-muted small"><%= parent.email %> </p>
+                                <p class="card-text text-muted">Contact: <%= parent.contactNumber %> </p>
+                                <p class="card-text"><%= parent.notes %> </p>
+                                <a class="btn btn-sm btn-warning" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %> 
+        </ol>
+    </div>
+
+    <div class="col-4">
+        <h3 class="text-center mb-3">Students DB</h3>
+        <div class="row">
+            <div class="col-4 offset-4">
+                <a class="btn btn-sm btn-success mb-3" href="/admin/student/add_student">Add Student</a>
+            </div>
+        </div>
+        <ol>
+            <% for(let student of students) { %> 
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= `${student.fullName}` %></h5>
+                                <small>
+                                    <p class="card-text">
+                                        <% if(!student.course) { %>
+                                            Course: <strong>None</strong><br>
+                                            Day: <strong>None</strong><br>
+                                            Time: <strong>None</strong><br>
+                                        <% } else { %>
+                                            Course: <strong><%= student.course.title %></strong><br>
+                                            Day: <strong><%= student.course.day %></strong><br>
+                                            Time: <strong><%= student.course.time %></strong><br>
+                                        <% } %>
+                                        Piano Grade: <%= student.pianoGrade %><br>
+                                        Theory Grade: <%= student.theoryGrade %><br>
+                                        Day: <%= student.day %><br>
+                                        Time: <%= student.time %><br>
+                                        DOB: <%= student.formattedDOB %><br>
+                                        Gender: <%= student.gender %><br>
+                                        <%= student.notes %>
+                                    </p>
+                                </small>
+                                <a class="btn btn-sm btn-warning" href="<%= `/admin/student/${student._id}/edit` %>">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %> 
+        </ol>
+    </div>
+</div>
+

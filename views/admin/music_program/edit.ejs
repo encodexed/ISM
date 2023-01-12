@@ -1,0 +1,94 @@
+<% layout('layouts/boilerplate') %>
+    <div class="text-center">
+        <h1>Edit a Program</h1>
+        <p>Admins can manually edit a music program on this page.</p>
+    </div> 
+
+    <div class="card p-5 container col-md-6 offset-md-3">
+        <form id="editForm" action="/admin/music_program/<%= musicProgram._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
+            <section>
+                <div class="row form-floating mb-3">
+                    <input class="form-control" type="text" id="title" name="musicProgram[title]"
+                        placeholder="Title" value="<%= musicProgram.title %>" required autofocus>
+                    <div class="invalid-feedback">
+                        Music program requires a valid title.
+                    </div>
+                    <label class="form-label" for="title">Title</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <select class="form-select" id="day" aria-label="Day dropdown menu"
+                        name="musicProgram[day]" required>
+                        <option selected value="<%= musicProgram.day %>"><%= musicProgram.day %></option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a day.
+                    </div>
+                    <label class="form-label" for="day">Day</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <input class="form-control" type="text" id="time" name="musicProgram[time]"
+                        placeholder="Time" value="<%= musicProgram.time %>" required>
+                    <div class="invalid-feedback">
+                        Music program requires a valid time.
+                    </div>
+                    <label class="form-label" for="time">Time</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <input class="form-control" type="text" id="duration" name="musicProgram[duration]"
+                        placeholder="Duration" value="<%= musicProgram.duration %>" required>
+                    <div class="invalid-feedback">
+                        Music program requires a valid duration.
+                    </div>
+                    <label class="form-label" for="duration">Duration</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <input class="form-control" type="text" id="teacher" name="musicProgram[teacher]"
+                        placeholder="Teacher" value="<%= musicProgram.teacher %>" required>
+                    <div class="invalid-feedback">
+                        Music program requires a valid teacher.
+                    </div>
+                    <label class="form-label" for="teacher">Teacher</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <select class="form-select" id="room" aria-label="Room dropdown menu"
+                        name="musicProgram[room]" required>
+                        <option selected value="<%= musicProgram.room %>"><%= musicProgram.room %></option>
+                        <option value="Group">Group</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a room.
+                    </div>
+                    <label class="form-label" for="room">Room</label>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <textarea class="form-control" placeholder="Notes" id="notes"
+                        style="height: 150px" name="musicProgram[notes]"><%= musicProgram.notes %></textarea>
+                    <label class="form-label" for="notes">Notes</label>
+                </div>
+            </section>
+        </form>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Program</button>
+                <a class="btn btn-sm btn-secondary" href="/admin/index">Back</a>
+                <form class="d-inline" action="/admin/music_program/<%= musicProgram._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>

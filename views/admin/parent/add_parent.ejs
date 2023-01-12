@@ -1,0 +1,57 @@
+<% layout('layouts/boilerplate') %> 
+<div class="text-center">
+    <h1>Add a Parent</h1>
+    <p>Admins can manually add parents on this page.</p>
+</div>
+
+<form action="/admin/parent/add_parent" method="POST" novalidate class="needs-validation">
+    <div class="card p-5 container col-md-6 offset-md-3">
+        <section>
+            <div class="row form-floating mb-3">
+                <input class="form-control" type="text" id="firstName" name="parent[firstName]"
+                    placeholder="First Name" required autofocus>
+                <div class="invalid-feedback">
+                    Parent requires a valid first name.
+                </div>
+                <label class="form-label" for="firstName">First Name</label>
+            </div>
+
+            <div class="row form-floating mb-3">
+                <input class="form-control" type="text" id="lastName" name="parent[lastName]"
+                    placeholder="Last Name" required>
+                <div class="invalid-feedback">
+                    Parent requires a valid last name.
+                </div>
+                <label class="form-label" for="lastName">Last Name</label>
+            </div>
+
+            <div class="row form-floating mb-3">
+                <input class="form-control" type="email" id="email" name="parent[email]"
+                    placeholder="Email" required>
+                <div class="invalid-feedback">
+                    Parent requires a valid email.
+                </div>
+                <label class="form-label" for="email">Email</label>
+            </div>
+
+            <div class="row form-floating mb-3">
+                <input class="form-control" type="tel" id="contactNumber" name="parent[contactNumber]"
+                    placeholder="Contact Number" required>
+                <div class="invalid-feedback">
+                    Parent requires a valid contact number.
+                </div>
+                <label class="form-label" for="contactNumber">Contact Number</label>
+            </div>
+
+            <div class="row form-floating mb-3">
+                <textarea class="form-control" placeholder="Notes" id="notes"
+                    style="height: 150px" name="parent[notes]">No notes.</textarea>
+                <label class="form-label" for="notes">Notes</label>
+            </div>
+
+            <div class="row mt-3">
+                <button class="btn btn-primary">Add Parent</button>
+            </div>
+        </section>
+    </div>
+</form>
