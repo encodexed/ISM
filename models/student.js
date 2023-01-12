@@ -7,8 +7,6 @@ const StudentSchema = new Schema({
     course: { type: Schema.Types.ObjectID, ref: 'MusicProgram'},
     pianoGrade: String,
     theoryGrade: String,
-    day: String,
-    time: String,
     dateOfBirth: String,
     gender: {
         type: String,

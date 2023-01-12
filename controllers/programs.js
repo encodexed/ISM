@@ -19,13 +19,11 @@ module.exports.renderInfo = (req, res) => {
 
 module.exports.enrol = async (req, res) => {
     const parent = new Parent(req.body.parent);
-    parent.notes = 'none';
+    parent.notes = '';
     await parent.save();
 
     const student = new Student(req.body.student);
-    student.course = 'none';
-    student.day = 'none';
-    student.time = 'none';
+    student.course = undefined;
     await student.save();
 
     res.redirect('/programs/success');

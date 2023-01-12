@@ -62,10 +62,17 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title"><%= `${parent.firstName} ${parent.lastName}` %></h5>
-                                <p class="card-text text-muted small"><%= parent.email %> </p>
-                                <p class="card-text text-muted">Contact: <%= parent.contactNumber %> </p>
-                                <p class="card-text"><%= parent.notes %> </p>
-                                <a class="btn btn-sm btn-warning" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
+                                <small>
+                                    <p class="card-text">
+                                        Email: <%= parent.email %><br>
+                                        Contact: <%= parent.contactNumber %><br>
+                                        <% if (parent.notes) { %>
+                                            Notes: <%= parent.notes %>
+                                        <% } %>
+                                        
+                                    </p>
+                                </small>
+                                <a class="btn btn-sm btn-warning mt-3" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
                             </div>
                         </div>
                     </div>
