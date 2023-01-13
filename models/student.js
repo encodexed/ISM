@@ -12,7 +12,8 @@ const StudentSchema = new Schema({
         type: String,
         enum: ['Male', 'Female', 'Other', 'Unsure']
     },
-    notes: String
+    notes: String,
+    parent: { type: Schema.Types.ObjectID, ref: 'Parent' }
 })
 
 StudentSchema.virtual('formattedDOB').get(function () {
