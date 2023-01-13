@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %> 
 
 <h1 class="display-2 text-center">Admin Dashboard</h1>
+<p class="text-center">A visualisation of the database storing all information on music programs, parents and students.</p>
 <div class="mb-3">
     <%- include('../partials/adminNav') %>
 </div>
@@ -72,7 +73,10 @@
                                         
                                     </p>
                                 </small>
-                                <a class="btn btn-sm btn-warning mt-3" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
+                                <div class="mt-3">
+                                    <a class="btn btn-sm btn-info" href="<%= `/admin/parent/${parent._id}/manage_dependents` %>">Manage Dependents</a>
+                                    <a class="btn btn-sm btn-warning" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
+                                </div>
                             </div>
                         </div>
                     </div>

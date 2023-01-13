@@ -37,7 +37,8 @@ module.exports.createProgram = async (req, res) => {
 
 module.exports.deleteMusicProgram = async (req, res) => {
     const musicProgram = await MusicProgram.findByIdAndDelete(req.params.id);
-    req.flash('success', `Successfully deleted entry for ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
+    req.flash('success', `Successfully deleted entry for ${musicProgram.title}, 
+        ${musicProgram.day} ${musicProgram.time}`);
     res.redirect('/admin/index');
 }
 
@@ -45,7 +46,8 @@ module.exports.updateMusicProgram = async (req, res) => {
     const { id } = req.params;
     const musicProgram = await MusicProgram.findByIdAndUpdate(id, { ...req.body.musicProgram });
     await musicProgram.save();
-    req.flash('success', `Successfully updated entry for ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
+    req.flash('success', `Successfully updated entry for ${musicProgram.title}, 
+        ${musicProgram.day} ${musicProgram.time}`);
     res.redirect('/admin/index');
 }
 
@@ -102,7 +104,8 @@ module.exports.enrolStudent = async (req, res) => {
     await student.save();
     musicProgram.enrolled.push(student);
     await musicProgram.save();
-    req.flash('success', `Successfully enrolled ${firstName} ${lastName} in ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
+    req.flash('success', `Successfully enrolled ${firstName} ${lastName} 
+        in ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
     res.redirect(`/admin/music_program/${musicProgram._id}/manage_students`);
 }
 
@@ -153,7 +156,8 @@ module.exports.createParent = async (req, res) => {
 
 module.exports.deleteParent = async (req, res) => {
     const parent = await Parent.findByIdAndDelete(req.params.id);
-    req.flash('success', `Successfully deleted a parent entry for ${parent.firstName} ${parent.lastName}: ${parent.email}, ${parent.contactNumber}`);
+    req.flash('success', `Successfully deleted a parent entry for ${parent.firstName} 
+        ${parent.lastName}: ${parent.email}, ${parent.contactNumber}`);
     res.redirect('/admin/index');
 }
 
@@ -161,7 +165,8 @@ module.exports.updateParent = async (req, res) => {
     const { id } = req.params;
     const parent = await Parent.findByIdAndUpdate(id, { ...req.body.parent });
     await parent.save();
-    req.flash('success', `Successfully updated a parent entry for ${parent.firstName} ${parent.lastName}: ${parent.email}, ${parent.contactNumber}`);
+    req.flash('success', `Successfully updated a parent entry for ${parent.firstName} 
+        ${parent.lastName}: ${parent.email}, ${parent.contactNumber}`);
     res.redirect('/admin/index');
 }
 
@@ -172,6 +177,11 @@ module.exports.renderEditParent = async (req, res) => {
         res.redirect('/admin/index');
     }
     res.render('admin/parent/edit', { parent });
+}
+
+module.exports.renderManageDependents = async (req, res) => {
+    const parent = await Parent.findById(req.params.id);
+    res.render('admin/parent/manage_dependents');
 }
 
 // Students

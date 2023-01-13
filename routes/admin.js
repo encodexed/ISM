@@ -47,6 +47,9 @@ router.route('/parent/:id')
 router.route('/parent/:id/edit')
     .get(admin.renderEditParent);
 
+router.route('/parent/:id/manage_dependents')
+    .get(admin.renderManageDependents);
+
 // Students
 
 router.route('/student/add_student')
