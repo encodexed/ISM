@@ -18,6 +18,34 @@
         </small>
     </div>
 
+    <form class="row justify-content-center" action="/admin/parent/<%= parent._id %>/add_dependents?_method=PUT" method="POST">
+        <div class="col-auto">
+            <input class="form-control" type="text" name="student[firstName]"
+            placeholder="First name">
+        </div>
+        <div class="col-auto">
+            <input class="form-control" type="text" name="student[lastName]"
+            placeholder="Last name">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn btn-primary mb-3">Add Dependent</button>
+        </div>
+    </form>
+
+    <form class="row justify-content-center" action="/admin/parent/<%= parent._id %>/remove_dependents?_method=PUT" method="POST">
+        <div class="col-auto">
+            <input class="form-control" type="text" name="student[firstName]"
+            placeholder="First name">
+        </div>
+        <div class="col-auto">
+            <input class="form-control" type="text" name="student[lastName]"
+            placeholder="Last name">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn btn-danger mb-3">Remove Dependent</button>
+        </div>
+    </form>
+
     <div class="row">
         <div class="col">
             <h2>Students without Parents</h2>

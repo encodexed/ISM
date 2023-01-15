@@ -106,7 +106,7 @@ module.exports.enrolStudent = async (req, res) => {
     await musicProgram.save();
     req.flash('success', `Successfully enrolled ${firstName} ${lastName} 
         in ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
-    res.redirect(`/admin/music_program/${musicProgram._id}/manage_students`);
+    res.redirect(`/admin/music_program/${id}/manage_students`);
 }
 
 module.exports.unenrolStudent = async (req, res) => {
@@ -183,6 +183,39 @@ module.exports.renderManageDependents = async (req, res) => {
     const parent = await Parent.findById(req.params.id);
     const students = await Student.find({});
     res.render('admin/parent/manage_dependents', { parent, students });
+}
+
+module.exports.addDependentToParent = async (req, res) => {
+    const { id } = req.params;
+    const parent = await Parent.findById(id);
+    const { firstName, lastName } = req.body.student;
+    const family = await Student.find({ lastName: `${lastName}` });
+    let student = {};
+    let studentFound = false;
+
+    if (family.length === 0) {
+        req.flash('error', 'Student not found.');
+        return res.redirect(`/admin/parent/${id}/add_dependents`);
+    } else {
+        for (let i = 0; i < family.length; i++) {
+            if (family[i].firstName === firstName) {
+                student = family[i];
+                studentFound = true;
+                break;
+            }
+        }
+    }
+    if (!studentFound) {
+        req.flash('error', 'Student not found.');
+        return res.redirect(`/admin/parent/${id}/add_dependents`);
+    }
+
+    parent.dependents.push(student);
+    parent.save();
+    req.flash('success', `Successfully added dependent (${student.firstName} ${student.lastName}) 
+        to the parent (${parent.firstName} ${parent.lastName})`);
+    res.redirect(`/admin/parent/${id}/add_dependents`);
+
 }
 
 // Students

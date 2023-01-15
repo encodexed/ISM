@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ParentSchema = new Schema({
     firstName: String,
     lastName: String,
-    students: [
+    dependents: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Student'

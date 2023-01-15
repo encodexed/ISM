@@ -31,9 +31,9 @@
                     <% } %>
                 </div>
                 
-                <form class="row justify-content-center" action="/admin/music_program/<%= musicProgram._id %>/manage_students?_method=PUT" method="POST">
+                <form class="row justify-content-center" action="/admin/music_program/<%= musicProgram._id %>/enrol_students?_method=PUT" method="POST">
                     <div class="col-auto">
-                        <input class="form-control" type="text" id="enrolled" name="student[firstName]"
+                        <input class="form-control" type="text" name="student[firstName]"
                         placeholder="First name">
                     </div>
                     <div class="col-auto">
@@ -47,7 +47,7 @@
 
                 <form class="row justify-content-center" action="/admin/music_program/<%= musicProgram._id %>/unenrol_student?_method=PUT" method="POST">
                     <div class="col-auto">
-                        <input class="form-control" type="text" id="enrolled" name="student[firstName]"
+                        <input class="form-control" type="text" name="student[firstName]"
                         placeholder="First name">
                     </div>
                     <div class="col-auto">
