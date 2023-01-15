@@ -180,7 +180,7 @@ module.exports.renderEditParent = async (req, res) => {
 }
 
 module.exports.renderManageDependents = async (req, res) => {
-    const parent = await Parent.findById(req.params.id);
+    const parent = await Parent.findById(req.params.id).populate('dependents', 'firstName lastName');
     const students = await Student.find({});
     res.render('admin/parent/manage_dependents', { parent, students });
 }
