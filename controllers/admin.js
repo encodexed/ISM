@@ -7,9 +7,12 @@ module.exports.renderAdminLogin = (req, res) => {
 }
 
 module.exports.renderAdminIndex = async (req, res) => {
-    const musicPrograms = await MusicProgram.find({}).populate('enrolled', 'firstName lastName');
+    const musicPrograms = await MusicProgram.find({})
+        .populate('enrolled', 'firstName lastName');
     const parents = await Parent.find({});
-    const students = await Student.find({}).populate('course', 'title day time').populate('parent', 'firstName lastName');
+    const students = await Student.find({})
+        .populate('course', 'title day time')
+        .populate('parent', 'firstName lastName');
     res.render('admin/index', { musicPrograms, parents, students });
 }
 
@@ -61,7 +64,8 @@ module.exports.renderEditMusicProgram = async (req, res) => {
 }
 
 module.exports.renderManageStudents = async (req, res) => {
-    const musicProgram = await MusicProgram.findById(req.params.id).populate('enrolled');
+    const musicProgram = await MusicProgram.findById(req.params.id)
+        .populate('enrolled');
     const students = await Student.find({});
     if(!musicProgram){
         req.flash('error', 'Music Program not found.');
@@ -180,7 +184,8 @@ module.exports.renderEditParent = async (req, res) => {
 }
 
 module.exports.renderManageDependents = async (req, res) => {
-    const parent = await Parent.findById(req.params.id).populate('dependents', 'firstName lastName');
+    const parent = await Parent.findById(req.params.id)
+        .populate('dependents', 'firstName lastName');
     const students = await Student.find({});
     res.render('admin/parent/manage_dependents', { parent, students });
 }
@@ -211,12 +216,46 @@ module.exports.addDependentToParent = async (req, res) => {
     }
 
     parent.dependents.push(student);
-    parent.save();
+    await parent.save();
     student.parent = parent;
-    student.save();
+    await student.save();
     req.flash('success', `Successfully added dependent (${student.firstName} ${student.lastName}) 
         to the parent (${parent.firstName} ${parent.lastName})`);
     res.redirect(`/admin/parent/${id}/add_dependents`);
+
+}
+
+module.exports.removeDependentFromParent = async(req, res) => {
+    const { id } = req.params;
+    const { firstName, lastName } = req.body.student;
+    const family = await Student.find({ lastName: `${lastName}` });
+    let student = {};
+    let studentFound = false;
+
+    if (family.length === 0) {
+        req.flash('error', 'Student not found.');
+        return res.redirect(`/admin/parent/${id}/add_dependents`);
+    } else {
+        for (let i = 0; i < family.length; i++) {
+            if (family[i].firstName === firstName) {
+                student = family[i];
+                studentFound = true;
+                break;
+            }
+        }
+    }
+    if (!studentFound) {
+        req.flash('error', 'Student not found.');
+        return res.redirect(`/admin/parent/${id}/add_dependents`);
+    }
+
+    student.parent = undefined;
+    await student.save();
+    await Parent.findByIdAndUpdate(id, { $pull: { dependents: student._id } });
+    req.flash('success', `Successfully removed dependent (${student.firstName} ${student.lastName}) 
+        from the parent.`);
+    res.redirect(`/admin/parent/${id}/add_dependents`);
+
 
 }
 

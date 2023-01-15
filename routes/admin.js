@@ -51,6 +51,9 @@ router.route('/parent/:id/add_dependents')
     .get(admin.renderManageDependents)
     .put(admin.addDependentToParent);
 
+router.route('/parent/:id/remove_dependents')
+    .put(admin.removeDependentFromParent);
+
 // Students
 
 router.route('/student/add_student')
