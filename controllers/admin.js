@@ -9,7 +9,7 @@ module.exports.renderAdminLogin = (req, res) => {
 module.exports.renderAdminIndex = async (req, res) => {
     const musicPrograms = await MusicProgram.find({}).populate('enrolled', 'firstName lastName');
     const parents = await Parent.find({});
-    const students = await Student.find({}).populate('course', 'title day time');
+    const students = await Student.find({}).populate('course', 'title day time').populate('parent', 'firstName lastName');
     res.render('admin/index', { musicPrograms, parents, students });
 }
 
@@ -212,6 +212,8 @@ module.exports.addDependentToParent = async (req, res) => {
 
     parent.dependents.push(student);
     parent.save();
+    student.parent = parent;
+    student.save();
     req.flash('success', `Successfully added dependent (${student.firstName} ${student.lastName}) 
         to the parent (${parent.firstName} ${parent.lastName})`);
     res.redirect(`/admin/parent/${id}/add_dependents`);

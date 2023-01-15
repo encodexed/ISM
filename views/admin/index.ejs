@@ -116,10 +116,16 @@
                                         Time: <%= student.time %><br>
                                         DOB: <%= student.formattedDOB %><br>
                                         Gender: <%= student.gender %><br>
+
+                                        <% if (student.parent !== undefined) { %> 
+                                            <strong>Parent:</strong> <%= student.parent.firstName %> <%= student.parent.lastName %><br> 
+                                        <% } else { %> 
+                                            <strong>Parent:</strong> None assigned.<br><br>
+                                        <% } %> 
                                         <%= student.notes %>
                                     </p>
                                 </small>
-                                <a class="btn btn-sm btn-warning" href="<%= `/admin/student/${student._id}/edit` %>">Edit</a>
+                                <a class="btn btn-sm btn-warning mt-3" href="<%= `/admin/student/${student._id}/edit` %>">Edit</a>
                             </div>
                         </div>
                     </div>
