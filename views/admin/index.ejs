@@ -67,6 +67,16 @@
                                     <p class="card-text">
                                         Email: <%= parent.email %><br>
                                         Contact: <%= parent.contactNumber %><br>
+
+                                        <% if (parent.dependents.length !== 0) { %>
+                                            <strong>Dependents:</strong><br>
+                                            <% for (let i = 0; i < parent.dependents.length; i++) { %> 
+                                                <%= `${parent.dependents[i].firstName} ${parent.dependents[i].lastName}` %><br>
+                                            <% } %> 
+                                        <% } else { %> 
+                                            <strong>Dependents:</strong> None assigned.<br>
+                                        <% } %> 
+
                                         <% if (parent.notes) { %>
                                             Notes: <%= parent.notes %>
                                         <% } %>

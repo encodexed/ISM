@@ -9,7 +9,8 @@ module.exports.renderAdminLogin = (req, res) => {
 module.exports.renderAdminIndex = async (req, res) => {
     const musicPrograms = await MusicProgram.find({})
         .populate('enrolled', 'firstName lastName');
-    const parents = await Parent.find({});
+    const parents = await Parent.find({})
+        .populate('dependents', 'firstName lastName');
     const students = await Student.find({})
         .populate('course', 'title day time')
         .populate('parent', 'firstName lastName');
