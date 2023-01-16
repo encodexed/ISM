@@ -10,10 +10,12 @@ module.exports.renderAdminIndex = async (req, res) => {
     const musicPrograms = await MusicProgram.find({})
         .populate('enrolled', 'firstName lastName');
     const parents = await Parent.find({})
-        .populate('dependents', 'firstName lastName');
+        .populate('dependents', 'firstName lastName')
+        .sort({ "lastName": 1, "firstName": 1 });
     const students = await Student.find({})
         .populate('course', 'title day time')
-        .populate('parent', 'firstName lastName');
+        .populate('parent', 'firstName lastName')
+        .sort({ "lastName": 1, "firstName": 1 });
     res.render('admin/index', { musicPrograms, parents, students });
 }
 
