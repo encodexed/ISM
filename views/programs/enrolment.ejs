@@ -11,25 +11,25 @@
             <h2 class="mb-3">Parent/Guardian Details</h2>
             <p>Tell us about yourself, or the primary contact for the student.</p>
             <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="firstName" name="parent[firstName]" placeholder="First Name"
+                <input class="form-control" type="text" id="parentFirstName" name="enquiry[parentFirstName]" placeholder="Parent First Name"
                     required autofocus>
                 <div class="invalid-feedback">
                     Please enter a first name.
                 </div>
-                <label class="form-label" for="firstName">First Name</label>
+                <label class="form-label" for="parentFirstName">First Name</label>
             </div>
 
             <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="lastName" name="parent[lastName]" placeholder="Last Name"
+                <input class="form-control" type="text" id="parentLastName" name="enquiry[parentLastName]" placeholder="Parent Last Name"
                     required>
                 <div class="invalid-feedback">
-                    Please enter a name.
+                    Please enter a last name.
                 </div>
-                <label class="form-label" for="lastName">Last Name</label>
+                <label class="form-label" for="parentLastName">Last Name</label>
             </div>
 
             <div class="row form-floating mb-3">
-                <input class="form-control" type="email" id="email" name="parent[email]" placeholder="Email" required>
+                <input class="form-control" type="email" id="email" name="enquiry[email]" placeholder="Email" required>
                 <div class="invalid-feedback">
                     Please enter a valid email address.
                 </div>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="row form-floating mb-3">
-                <input class="form-control" type="tel" id="contactNumber" name="parent[contactNumber]"
+                <input class="form-control" type="tel" id="contactNumber" name="enquiry[contactNumber]"
                     placeholder="Contact Number" required>
                 <div class="invalid-feedback">
                     Please enter a contact phone number, preferably a mobile number.
@@ -50,7 +50,7 @@
             <h2 class="mb-3">Student Details</h2>
             <p>Tell us about the student.</p>
             <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="studentFirstName" name="student[firstName]"
+                <input class="form-control" type="text" id="studentFirstName" name="enquiry[studentFirstName]"
                     placeholder="Student's First Name" required>
                 <div class="invalid-feedback">
                     Please enter a first name.
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="studentLastName" name="student[lastName]"
+                <input class="form-control" type="text" id="studentLastName" name="enquiry[studentLastName]"
                     placeholder="Student's Last Name" required>
                 <div class="invalid-feedback">
                     Please enter a last name.
@@ -68,13 +68,13 @@
             </div>
 
             <div class="row form-floating mb-3">
-                <input class="form-control" type="date" value="1970-01-01" id="dateOfBirth" name="student[dateOfBirth]"
+                <input class="form-control" type="date" value="1970-01-01" id="dateOfBirth" name="enquiry[dateOfBirth]"
                     placeholder="Date of Birth">
                 <label class="form-label" for="dateOfBirth">Date of Birth</label>
             </div>
 
             <div class="row form-floating mb-3">
-                <select class="form-select" id="gender" aria-label="Gender dropdown menu" name="student[gender]"
+                <select class="form-select" id="gender" aria-label="Gender dropdown menu" name="enquiry[gender]"
                     required>
                     <option selected disabled value="">---</option>
                     <option value="Female">Female</option>
@@ -89,7 +89,7 @@
 
             <div class="row form-floating mb-3">
                 <textarea class="form-control" placeholder="Additional info" id="additionalInfo" style="height: 150px"
-                    name="student[notes]"></textarea>
+                    name="enquiry[notes]"></textarea>
                 <label class="form-label" for="additionalInfo">Comments (optional)</label>
                 <p class="mt-3">Leave any additional information here (prior learning/grades, medical conditions,
                     learning
@@ -102,7 +102,7 @@
             <p>Tell us about which program you are most interested in.</p>
             <div class="row form-floating mb-3">
                 <select class="form-select" id="programSelect" aria-label="Program selection dropdown menu"
-                    name="enquiry[program]" required>
+                    name="enquiry[desiredMusicProgram]" required>
                     <option selected disabled value="">---</option>
                     <option value="Jitterbugs">Jitterbugs</option>
                     <option value="Beeboppers">Beeboppers</option>
@@ -119,11 +119,7 @@
 
             <!-- Section needs work -->
             <div class="row form-floating mb-3">
-                <select class="form-select" id="timeSelect" aria-label="Preferred time selection dropdown menu"
-                    name="enquiry[preferredTime]" required>
-                    <option selected disabled value="">---</option>
-                    <option value="Anytime">Any time</option>
-                </select>
+                <input class="form-control" type="text" id="timeSelect" name="enquiry[preferredTime]" required>
                 <label class="form-label" for="timeSelect">Preferred time</label>
             </div>
 
