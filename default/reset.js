@@ -143,7 +143,7 @@ const resetAll = async () => {
         studentLastName: 'Hallefax',
         dateOfBirth: '2014-07-28',
         gender: 'Female',
-        notes: 'No notes.',
+        notes: 'Hi there, I was just wondering if it would be possible to get a discount on your fine services. I am poor and have to pay for surgery on my knee soon.',
         desiredMusicProgram: 'Pianorama Junior',
         preferredTime: 'Wednesday 9:45am'
     })

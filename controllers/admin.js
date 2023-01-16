@@ -1,12 +1,14 @@
 const MusicProgram = require('../models/musicProgram');
 const Parent = require('../models/parent');
 const Student = require('../models/student');
+const Enquiry = require('../models/enquiry');
 
 module.exports.renderAdminLogin = (req, res) => {
     res.render('admin/login');
 }
 
 module.exports.renderAdminIndex = async (req, res) => {
+    const enquiries = await Enquiry.find({});
     const musicPrograms = await MusicProgram.find({})
         .populate('enrolled', 'firstName lastName');
     const parents = await Parent.find({})
@@ -16,16 +18,18 @@ module.exports.renderAdminIndex = async (req, res) => {
         .populate('course', 'title day time')
         .populate('parent', 'firstName lastName')
         .sort({ "lastName": 1, "firstName": 1 });
-    res.render('admin/index', { musicPrograms, parents, students });
+    res.render('admin/index', { musicPrograms, parents, students, enquiries });
 }
 
 module.exports.renderAdminTimetable = async (req, res) => {
+    const enquiries = await Enquiry.find({});
     const musicPrograms = await MusicProgram.find({});
-    res.render('admin/timetable', { musicPrograms });
+    res.render('admin/timetable', { musicPrograms, enquiries });
 }
 
-module.exports.renderAdminEnquiries = (req, res) => {
-    res.render('admin/enquiries');
+module.exports.renderAdminEnquiries = async (req, res) => {
+    const enquiries = await Enquiry.find({});
+    res.render('admin/enquiries', { enquiries });
 }
 
 // Music Programs

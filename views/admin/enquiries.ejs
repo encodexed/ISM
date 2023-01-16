@@ -5,4 +5,36 @@
         <%- include('../partials/adminNav') %>
     </div>
     <p>Admins will be able to see any new enrolment and enquiry requests here.</p>
+
+    <div class="col-"></div>
+
+    <% if (enquiries.length === 0) { %>
+        <p>No new enquiries. Nice!</p>
+    <% } else { %>
+        <% for (let enquiry of enquiries) { %>
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4 card mb-3">
+                    <div class="card-body">
+
+                        <% if (enquiry.submittedFrom === 'Seeded' || 'Enrolment') { %> 
+                            <h5 class="card-title"><%= enquiry.submittedFrom %></h5>
+                            <small>
+                                <p class="card-text">
+                                    Name: <strong><%= enquiry.parentFirstName %> <%= enquiry.parentLastName %></strong><br>
+                                    Student: <strong><%= enquiry.studentFirstName %> <%= enquiry.studentLastName %></strong><br>
+                                    <%= enquiry.notes %>
+                                </p>
+                            </small>
+                        <% } %> 
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        <% } %>
+    <% } %> 
 </div>
