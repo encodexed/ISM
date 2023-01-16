@@ -28,7 +28,7 @@
                                         Duration: <%= musicProgram.duration %><br>
                                         Teacher: <%= musicProgram.teacher %><br>
                                         Room: <%= musicProgram.room %><br>
-                                        Notes: <%= musicProgram.notes %>
+                                        <br><%= musicProgram.notes %>
                                     </p>
                                     <p>
                                         <strong>Enrolled:</strong> <%= musicProgram.enrolled.length %><br>
@@ -78,7 +78,7 @@
                                         <% } %> 
 
                                         <% if (parent.notes) { %>
-                                            Notes: <%= parent.notes %>
+                                            <br><%= parent.notes %>
                                         <% } %>
                                         
                                     </p>
@@ -122,8 +122,6 @@
                                         <% } %>
                                         Piano Grade: <%= student.pianoGrade %><br>
                                         Theory Grade: <%= student.theoryGrade %><br>
-                                        Day: <%= student.day %><br>
-                                        Time: <%= student.time %><br>
                                         DOB: <%= student.formattedDOB %><br>
                                         Gender: <%= student.gender %><br>
 

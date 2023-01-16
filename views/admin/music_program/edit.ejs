@@ -19,14 +19,13 @@
                 <div class="row form-floating mb-3">
                     <select class="form-select" id="day" aria-label="Day dropdown menu"
                         name="musicProgram[day]" required>
-                        <option selected value="<%= musicProgram.day %>"><%= musicProgram.day %></option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                        <option value="Sunday">Sunday</option>
+                        <option id="Monday" value="Monday">Monday</option>
+                        <option id="Tuesday" value="Tuesday">Tuesday</option>
+                        <option id="Wednesday" value="Wednesday">Wednesday</option>
+                        <option id="Thursday" value="Thursday">Thursday</option>
+                        <option id="Friday" value="Friday">Friday</option>
+                        <option id="Saturday" value="Saturday">Saturday</option>
+                        <option id="Sunday" value="Sunday">Sunday</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a day.
@@ -64,10 +63,9 @@
                 <div class="row form-floating mb-3">
                     <select class="form-select" id="room" aria-label="Room dropdown menu"
                         name="musicProgram[room]" required>
-                        <option selected value="<%= musicProgram.room %>"><%= musicProgram.room %></option>
-                        <option value="Group">Group</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option id="Group" value="Group">Group</option>
+                        <option id="1" value="1">1</option>
+                        <option id="2" value="2">2</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a room.
@@ -92,3 +90,10 @@
             </div>
         </div>
     </div>
+
+<script>
+    addEventListener("load", (event) => {
+        document.getElementById("<%= musicProgram.room %>").setAttribute("selected", "");
+        document.getElementById("<%= musicProgram.day %>").setAttribute("selected", "");
+    });
+</script>

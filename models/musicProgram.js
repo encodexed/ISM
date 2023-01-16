@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const MusicProgramSchema = new Schema({
     title: String,
-    day: String,
+    day: {
+        type: String,
+        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    },
     time: String,
     duration: String,
     teacher: String,
