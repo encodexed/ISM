@@ -14,7 +14,7 @@ const EnquirySchema = new Schema({
     // Student
     studentFirstName: String,
     studentLastName: String,
-    dataOfBirth: String,
+    dateOfBirth: String,
     gender: {
         type: String,
         enum: ['Male', 'Female', 'Other', 'Unsure']
@@ -23,6 +23,11 @@ const EnquirySchema = new Schema({
     // Music Program
     desiredMusicProgram: String,
     preferredTime: String
+})
+
+EnquirySchema.virtual('formattedDOB').get(function () {
+    const dobArray = this.dateOfBirth.split('-');
+    return `${dobArray[2]}/${dobArray[1]}/${dobArray[0]}`;
 })
 
 module.exports = mongoose.model('Enquiry', EnquirySchema);

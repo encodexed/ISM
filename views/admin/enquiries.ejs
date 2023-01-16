@@ -24,8 +24,15 @@
                             <small>
                                 <p class="card-text">
                                     Name: <strong><%= enquiry.parentFirstName %> <%= enquiry.parentLastName %></strong><br>
+                                    Email: <%= enquiry.email %><br>
+                                    Contact: <%= enquiry.contactNumber %><br>
                                     Student: <strong><%= enquiry.studentFirstName %> <%= enquiry.studentLastName %></strong><br>
-                                    <%= enquiry.notes %>
+                                    Date of Birth: <%= enquiry.formattedDOB %><br>
+                                    Gender: <%= enquiry.gender %><br>
+                                    Desired Music Program: <%= enquiry.desiredMusicProgram %><br>
+                                    Preferred Time: <%= enquiry.preferredTime %><br>
+                                    <br>
+                                    <%= enquiry.notes %><br>
                                 </p>
                             </small>
                         <% } %> 
