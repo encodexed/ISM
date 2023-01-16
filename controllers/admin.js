@@ -88,7 +88,7 @@ module.exports.enrolStudent = async (req, res) => {
     let studentFound = false;
     if (students.length === 0) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${musicProgram._id}/manage_students`);
+        return res.redirect(`/admin/music_program/${musicProgram._id}/enrol_students`);
     } else if (students.length === 1) {
         student = students[0];
         studentFound = true;
@@ -103,7 +103,7 @@ module.exports.enrolStudent = async (req, res) => {
     }
     if (!studentFound) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${musicProgram._id}/manage_students`);
+        return res.redirect(`/admin/music_program/${musicProgram._id}/enrol_students`);
     }
     student.course = musicProgram;
     await student.save();
@@ -111,7 +111,7 @@ module.exports.enrolStudent = async (req, res) => {
     await musicProgram.save();
     req.flash('success', `Successfully enrolled ${firstName} ${lastName} 
         in ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
-    res.redirect(`/admin/music_program/${id}/manage_students`);
+    res.redirect(`/admin/music_program/${id}/enrol_students`);
 }
 
 module.exports.unenrolStudent = async (req, res) => {
