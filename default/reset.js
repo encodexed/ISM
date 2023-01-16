@@ -4,6 +4,7 @@ const port = 3000;
 const MusicProgram = require('../models/musicProgram');
 const Parent = require('../models/parent');
 const Student = require('../models/student');
+const Enquiry = require('../models/enquiry');
 
 mongoose.connect(`mongodb://localhost:27017/ism-leichhardt`, {
     useNewURLParser: true,
@@ -127,6 +128,26 @@ const resetAll = async () => {
         notes: 'Must be scheduled on the same day as her sisters'
     })
     await student5.save();
+
+    // Resetting enquiries
+
+    await Enquiry.deleteMany();
+
+    const enquiry1 = new Enquiry({
+        submittedFrom: 'Seeded',
+        parentFirstName: 'Julia',
+        parentLastName: 'Hallefax',
+        email: 'juliaisneedy53@hotmail.com',
+        contactNumber: '0408984521',
+        studentFirstName: 'Samantha',
+        studentLastName: 'Hallefax',
+        dateOfBirth: '2014-07-28',
+        gender: 'Female',
+        notes: 'No notes.',
+        desiredMusicProgram: 'Pianorama Junior',
+        preferredTime: 'Wednesday 9:45am'
+    })
+    await enquiry1.save();
 }
 
 // Calling the reset

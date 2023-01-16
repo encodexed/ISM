@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EnquirySchema = new Schema({
+    submittedFrom: {
+        type: String,
+        enum: ['Seeded', 'Enrolment', 'Enquiry']
+    },
     // Parent
     parentFirstName: String,
     parentLastName: String,
