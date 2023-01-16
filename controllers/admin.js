@@ -303,7 +303,8 @@ module.exports.updateStudent = async (req, res) => {
 }
 
 module.exports.renderEditStudent = async (req, res) => {
-    const student = await Student.findById(req.params.id);
+    const student = await Student.findById(req.params.id)
+        .populate('course', 'title day time');
     if(!student){
         req.flash('error', 'Student not found.');
         res.redirect('/admin/index');

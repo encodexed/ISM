@@ -25,22 +25,13 @@
                     <label class="form-label" for="lastName">Last Name</label>
                 </div>
 
-                <div class="row form-floating mb-3">
-                    <select class="form-select" id="course" aria-label="Courses dropdown menu"
-                        name="student[course]" required>
-                        <option selected value="<%= student.course %>"><%= student.course %></option>
-                        <option value="Jitterbugs">Jitterbugs</option>
-                        <option value="Beeboppers">Beeboppers</option>
-                        <option value="Pianorama Juniors">Pianorama Juniors</option>
-                        <option value="Pianorama Primary">Pianorama Primary</option>
-                        <option value="Individual Lessons">Individual Lessons</option>
-                        <option value="Adult Lessons">Adult Lessons</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a course.
-                    </div>
-                    <label class="form-label" for="course">Course</label>
-                </div>
+                <p>
+                    <% if (student.course === undefined) { %> 
+                        <strong>Course:</strong> Not enrolled in any course.
+                    <% } else { %> 
+                        <strong>Course:</strong> <%= student.course.title %>, <%= student.course.day %> <%= student.course.time %>
+                    <% } %> 
+                </p>
 
                 <div class="row form-floating mb-3">
                     <input class="form-control" type="text" id="pianoGrade" name="student[pianoGrade]"
@@ -58,33 +49,6 @@
                         Student requires a valid theory grade.
                     </div>
                     <label class="form-label" for="theoryGrade">Theory Grade</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <select class="form-select" id="day" aria-label="Day dropdown menu"
-                        name="student[day]" required>
-                        <option selected value="<%= student.day %>"><%= student.day %></option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                        <option value="Sunday">Sunday</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a day.
-                    </div>
-                    <label class="form-label" for="day">Day</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="time" name="student[time]"
-                        placeholder="Time" value="<%= student.time %>" required>
-                    <div class="invalid-feedback">
-                        Student requires a valid course time.
-                    </div>
-                    <label class="form-label" for="time">Time</label>
                 </div>
 
                 <div class="row form-floating mb-3">
