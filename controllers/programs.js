@@ -1,5 +1,6 @@
 const Parent = require('../models/parent');
 const Student = require('../models/student');
+const Enquiry = require('../models/enquiry');
 
 module.exports.renderTimetable = (req, res) => {
     res.render('programs/timetable');
@@ -17,14 +18,10 @@ module.exports.renderInfo = (req, res) => {
     res.render('programs/info');
 }
 
-module.exports.enrol = async (req, res) => {
-    const parent = new Parent(req.body.parent);
-    parent.notes = '';
-    await parent.save();
-
-    const student = new Student(req.body.student);
-    student.course = undefined;
-    await student.save();
+module.exports.createEnquiry = async (req, res) => {
+    const enquiry = new Enquiry(req.body.enquiry);
+    enquiry.submittedFrom = 'Enrolment';
+    await enquiry.save();
 
     res.redirect('/programs/success');
 }

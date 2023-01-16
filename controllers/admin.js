@@ -27,9 +27,18 @@ module.exports.renderAdminTimetable = async (req, res) => {
     res.render('admin/timetable', { musicPrograms, enquiries });
 }
 
+// Enquiries
+
 module.exports.renderAdminEnquiries = async (req, res) => {
     const enquiries = await Enquiry.find({});
     res.render('admin/enquiries', { enquiries });
+}
+
+module.exports.clearEnquiry = async (req, res) => {
+    const enquiry = await Enquiry.findByIdAndDelete(req.params.id);
+    req.flash('success', `Deleted enquiry from ${enquiry.parentFirstName} ${enquiry.parentLastName}, 
+        ${enquiry.email}, ${enquiry.contactNumber}`);
+    res.redirect('/admin/enquiries');
 }
 
 // Music Programs

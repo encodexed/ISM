@@ -2,16 +2,12 @@ const express = require('express');
 const router = express.Router();
 const programs = require('../controllers/programs');
 
-// router.route('/register')
-//     .get(users.renderRegister)
-//     .post(catchAsync(users.register));
-
 router.route('/timetable')
     .get(programs.renderTimetable);
 
 router.route('/enrolment')
     .get(programs.renderEnrolment)
-    .post(programs.enrol);
+    .post(programs.createEnquiry);
 
 router.route('/enquiries')
     .get(programs.renderEnquiries);

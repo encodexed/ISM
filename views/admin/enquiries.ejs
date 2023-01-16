@@ -9,7 +9,7 @@
     <div class="col-"></div>
 
     <% if (enquiries.length === 0) { %>
-        <p>No new enquiries. Nice!</p>
+        <p><strong>No new enquiries. Nice!</strong></p>
     <% } else { %>
         <% for (let enquiry of enquiries) { %>
             <div class="row">
@@ -20,7 +20,7 @@
                     <div class="card-body">
 
                         <% if (enquiry.submittedFrom === 'Seeded' || 'Enrolment') { %> 
-                            <h5 class="card-title"><%= enquiry.submittedFrom %></h5>
+                            <h5 class="card-title">Source: <%= enquiry.submittedFrom %></h5>
                             <small>
                                 <p class="card-text">
                                     Name: <strong><%= enquiry.parentFirstName %> <%= enquiry.parentLastName %></strong><br>
@@ -35,6 +35,10 @@
                                     <%= enquiry.notes %><br>
                                 </p>
                             </small>
+
+                            <form class="d-inline" action= <%= `/admin/enquiries/${enquiry._id}/clear_enquiry?_method=DELETE` %> method="POST">
+                                <button class="btn btn-sm btn-danger mt-3">Clear</button>
+                            </form>
                         <% } %> 
                     </div>
                 </div>

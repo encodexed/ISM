@@ -11,8 +11,13 @@ router.route('/index')
 router.route('/timetable')
     .get(admin.renderAdminTimetable);
 
+// Enquiries
+
 router.route('/enquiries')
-    .get(admin.renderAdminEnquiries);
+    .get(admin.renderAdminEnquiries)
+
+router.route('/enquiries/:id/clear_enquiry')
+    .delete(admin.clearEnquiry);
 
 // Music programs
 
