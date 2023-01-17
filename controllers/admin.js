@@ -34,6 +34,34 @@ module.exports.renderAdminEnquiries = async (req, res) => {
     res.render('admin/enquiries', { enquiries });
 }
 
+module.exports.createParentStudentFromEnquiry = async (req, res) => {
+    const enquiry = await Enquiry.findById(req.params.id);
+    const newStudent = new Student({
+        firstName: enquiry.studentFirstName,
+        lastName: enquiry.studentLastName,
+        dateOfBirth: enquiry.dateOfBirth,
+        gender: enquiry.gender,
+        notes: `Desired program: ${enquiry.desiredMusicProgram}. Preferred time: ${enquiry.preferredTime}`
+    });
+    await newStudent.save();
+    
+    const newParent = new Parent({
+        firstName: enquiry.parentFirstName,
+        lastName: enquiry.parentLastName,
+        email: enquiry.email,
+        contactNumber: enquiry.contactNumber,
+        notes: `Message from parent: ${enquiry.notes}`,
+        dependents: newStudent
+    });
+    await newParent.save();
+
+    newStudent.parent = newParent;
+    await newStudent.save();
+    req.flash('success', `Successfully created new entries: ${newParent.firstName} ${newParent.lastName} 
+        and ${newStudent.firstName} ${newStudent.lastName}`);
+    res.redirect('/admin/enquiries');
+}
+
 module.exports.clearEnquiry = async (req, res) => {
     const enquiry = await Enquiry.findByIdAndDelete(req.params.id);
     req.flash('success', `Deleted enquiry from ${enquiry.parentFirstName} ${enquiry.parentLastName}, 

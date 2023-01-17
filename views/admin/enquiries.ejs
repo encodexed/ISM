@@ -23,7 +23,7 @@
                             <h5 class="card-title">Source: <%= enquiry.submittedFrom %></h5>
                             <small>
                                 <p class="card-text">
-                                    Name: <strong><%= enquiry.parentFirstName %> <%= enquiry.parentLastName %></strong><br>
+                                    Parent: <strong><%= enquiry.parentFirstName %> <%= enquiry.parentLastName %></strong><br>
                                     Email: <%= enquiry.email %><br>
                                     Contact: <%= enquiry.contactNumber %><br>
                                     Student: <strong><%= enquiry.studentFirstName %> <%= enquiry.studentLastName %></strong><br>
@@ -35,6 +35,10 @@
                                     <%= enquiry.notes %><br>
                                 </p>
                             </small>
+
+                            <form class="d-inline" action= <%=`/admin/enquiries/${enquiry._id}/createNewEntries`%> method="POST">
+                                <button class="btn btn-sm btn-info mt-3">Save Info</button>
+                            </form>
 
                             <form class="d-inline" action= <%= `/admin/enquiries/${enquiry._id}/clear_enquiry?_method=DELETE` %> method="POST">
                                 <button class="btn btn-sm btn-danger mt-3">Clear</button>

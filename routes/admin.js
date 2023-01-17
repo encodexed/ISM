@@ -16,8 +16,13 @@ router.route('/timetable')
 router.route('/enquiries')
     .get(admin.renderAdminEnquiries)
 
+router.route('/enquiries/:id/createNewEntries')
+    .post(admin.createParentStudentFromEnquiry);
+
 router.route('/enquiries/:id/clear_enquiry')
     .delete(admin.clearEnquiry);
+
+
 
 // Music programs
 
