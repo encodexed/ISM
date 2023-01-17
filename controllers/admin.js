@@ -167,7 +167,7 @@ module.exports.unenrolStudent = async (req, res) => {
 
     if (family.length === 0) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${id}/manage_students`);
+        return res.redirect(`/admin/music_program/${id}/enrol_students`);
     } else {
         for (let i = 0; i < family.length; i++) {
             if (family[i].firstName === firstName) {
@@ -179,14 +179,14 @@ module.exports.unenrolStudent = async (req, res) => {
     }
     if (!studentFound) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${id}/manage_students`);
+        return res.redirect(`/admin/music_program/${id}/enrol_students`);
     }
 
     student.course = undefined;
     await student.save();
     await MusicProgram.findByIdAndUpdate(id, { $pull: { enrolled: student._id } });
     req.flash('success', `Successfully removed ${firstName} ${lastName}`)
-    res.redirect(`/admin/music_program/${id}/manage_students`);
+    res.redirect(`/admin/music_program/${id}/enrol_students`);
 }
 
 // Parents
