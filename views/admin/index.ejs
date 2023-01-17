@@ -1,153 +1,24 @@
 <% layout('layouts/boilerplate') %> 
 
-<h1 class="display-2 text-center">Admin Dashboard</h1>
+<h1 class="display-1 text-center">Admin Dashboard</h1>
 <p class="text-center">A visualisation of the database storing all information on music programs, parents and students.</p>
-<div class="mb-3">
-    <%- include('../partials/adminNav') %>
-</div>
+<!-- Requires Admin logic -->
+<%- include('../partials/adminNav') %>
 
-<div class="row">
-    <div class="col-4">
-        <h3 class="text-center mb-3">Music Programs DB</h3>
-        <div class="row">
-            <div class="col-4 offset-4">
-                <a class="btn btn-sm btn-success mb-3" href="/admin/music_program/add_program">Add Program</a>
-            </div>
-        </div>
-        <ol>
-            <% for(let musicProgram of musicPrograms) { %> 
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= musicProgram.title %></h5>
-                                <small>
-                                    <p class="card-text">
-                                        Day: <strong><%= musicProgram.day %></strong><br>
-                                        Time: <strong><%= musicProgram.time %></strong><br>
-                                        Duration: <%= musicProgram.duration %><br>
-                                        Teacher: <%= musicProgram.teacher %><br>
-                                        Room: <%= musicProgram.room %><br>
-                                        <br><%= musicProgram.notes %>
-                                    </p>
-                                    <p>
-                                        <strong>Enrolled:</strong> <%= musicProgram.enrolled.length %><br>
-                                        <% if (musicProgram.enrolled.length !== 0) { %>
-                                            <% for(let student of musicProgram.enrolled) { %>
-                                                - <%= student.fullName %><br>
-                                            <% } %>
-                                        <% } %>
-                                    </p>
-                                </small>
-                                <a class="btn btn-sm btn-info" href="<%= `/admin/music_program/${musicProgram._id}/enrol_students` %>">Manage Students</a>
-                                <a class="btn btn-sm btn-warning" href="<%= `/admin/music_program/${musicProgram._id}/edit` %>">Edit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <% } %> 
-        </ol>
-    </div>
+<h1 class="display-5 text-center mb-3">Music Programs</h1>
+<table id="musicProgramsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
+    <script src="/javascripts/renderMusicProgramsTable.js" type="text/javascript"></script>
+    <script> renderMusicProgramsTable(document.getElementById('musicProgramsTable'), <%-JSON.stringify(musicPrograms)%>);</script>
+</table>
 
-    <div class="col-4">
-        <h3 class="text-center mb-3">Parents DB</h3>
-        <div class="row">
-            <div class="col-4 offset-4">
-                <a class="btn btn-sm btn-success mb-3" href="/admin/parent/add_parent">Add Parent</a>
-            </div>
-        </div>
-        <ol>
-            <% for(let parent of parents) { %> 
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= `${parent.firstName} ${parent.lastName}` %></h5>
-                                <small>
-                                    <p class="card-text">
-                                        Email: <%= parent.email %><br>
-                                        Contact: <%= parent.contactNumber %><br>
+<h1 class="display-5 text-center mb-3">Parents</h1>
+<table id="parentsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
+    <script src="/javascripts/renderParentsTable.js" type="text/javascript"></script>
+    <script> renderParentsTable(document.getElementById('parentsTable'), <%-JSON.stringify(parents)%>);</script>
+</table>
 
-                                        <% if (parent.dependents.length !== 0) { %>
-                                            <strong>Dependents:</strong><br>
-                                            <% for (let i = 0; i < parent.dependents.length; i++) { %> 
-                                                <% if (parent.dependents[i].firstName === null) { %>  
-                                                    Dependent DELETED.
-                                                    <% break; %> 
-                                                <% } %> 
-                                                <%= `${parent.dependents[i].firstName} ${parent.dependents[i].lastName}` %><br>
-                                            <% } %> 
-                                        <% } else { %> 
-                                            <strong>Dependents:</strong> None assigned.<br>
-                                        <% } %> 
-
-                                        <% if (parent.notes) { %>
-                                            <br><%= parent.notes %>
-                                        <% } %>
-                                        
-                                    </p>
-                                </small>
-                                <div class="mt-3">
-                                    <a class="btn btn-sm btn-info" href="<%= `/admin/parent/${parent._id}/add_dependents` %>">Manage Dependents</a>
-                                    <a class="btn btn-sm btn-warning" href="<%= `/admin/parent/${parent._id}/edit` %>">Edit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <% } %> 
-        </ol>
-    </div>
-
-    <div class="col-4">
-        <h3 class="text-center mb-3">Students DB</h3>
-        <div class="row">
-            <div class="col-4 offset-4">
-                <a class="btn btn-sm btn-success mb-3" href="/admin/student/add_student">Add Student</a>
-            </div>
-        </div>
-        <ol>
-            <% for(let student of students) { %> 
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= `${student.fullName}` %></h5>
-                                <small>
-                                    <p class="card-text">
-                                        <% if(!student.course) { %>
-                                            Course: <strong>None</strong><br>
-                                            Day: <strong>None</strong><br>
-                                            Time: <strong>None</strong><br>
-                                        <% } else { %>
-                                            Course: <strong><%= student.course.title %></strong><br>
-                                            Day: <strong><%= student.course.day %></strong><br>
-                                            Time: <strong><%= student.course.time %></strong><br>
-                                        <% } %>
-                                        Piano Grade: <%= student.pianoGrade %><br>
-                                        Theory Grade: <%= student.theoryGrade %><br>
-                                        DOB: <%= student.formattedDOB %><br>
-                                        Gender: <%= student.gender %><br>
-
-                                        <% if (student.parent !== undefined) { %> 
-                                            <% if (student.parent === null) { %> 
-                                                <strong>Parent:</strong> DELETED.<br><br>
-                                            <% } else { %> 
-                                            <strong>Parent:</strong> <%= student.parent.firstName %> <%= student.parent.lastName %><br><br> 
-                                            <% } %> 
-                                        <% } else { %> 
-                                            <strong>Parent:</strong> None assigned.<br><br>
-                                        <% } %> 
-                                        <%= student.notes %>
-                                    </p>
-                                </small>
-                                <a class="btn btn-sm btn-warning mt-3" href="<%= `/admin/student/${student._id}/edit` %>">Edit</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <% } %> 
-        </ol>
-    </div>
-</div>
-
+<h1 class="display-5 text-center mb-3">Students</h1>
+<table id="studentsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
+    <script src="/javascripts/renderStudentsTable.js" type="text/javascript"></script>
+    <script> renderStudentsTable(document.getElementById('studentsTable'), <%-JSON.stringify(students)%>);</script>
+</table>

@@ -42,19 +42,12 @@ function makeTimetable(tbl, musicPrograms) {
     tblHeadRow.className = '';
 
     // Creating the header row
-    const daysArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    for (let i = 0; i < daysArray.length + 1; i++) {
+    const daysArray = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    for (let i = 0; i < daysArray.length; i++) {
         const cell = document.createElement('th');
         cell.setAttribute('scope', 'col');
-
-        let cellText = '';
-        if (i !== 0) {
-            cellText = document.createTextNode(`${daysArray[i - 1]}`);
-            cell.setAttribute('style', 'width: 200px;');
-        } else {
-            cellText = document.createTextNode('');
-            cell.setAttribute('style', 'width: 200px;');
-        }
+        const cellText = document.createTextNode(`${daysArray[i]}`);
+        cell.setAttribute('style', 'width: 200px;');
         cell.appendChild(cellText);
         tblHeadRow.appendChild(cell);
     }
@@ -66,7 +59,7 @@ function makeTimetable(tbl, musicPrograms) {
     for (let row = 0; row < timeArray.length; row++) {
         const tblRow = document.createElement('tr');
 
-        for (let col = 0; col < daysArray.length + 1; col++) {
+        for (let col = 0; col < daysArray.length; col++) {
             if (col === 0) {
                 // Setting the first column to display the time each row
                 const cell = document.createElement('th');
@@ -77,7 +70,7 @@ function makeTimetable(tbl, musicPrograms) {
                 // Displaying programs if they exist, otherwise left empty
                 const cell = document.createElement('td');
                 for (let musicProgram of musicPrograms) {
-                    if (musicProgram.day === daysArray[col - 1]) {
+                    if (musicProgram.day === daysArray[col]) {
                         if (musicProgram.time === timeArray[row]) {
                             cell.innerHTML = `
                                 <p><strong>${musicProgram.title}</strong><br>
