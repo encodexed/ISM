@@ -51,6 +51,9 @@ function renderMusicProgramsTable(tbl, musicPrograms) {
 
         const cellEnrolled = document.createElement('td');
         studentListHTML = '';
+        if (musicProgram.enrolled.length === 0) {
+            studentListHTML = '-';
+        }
         for (let i = 0; i < musicProgram.enrolled.length; i++) {
             if (i === 0 ) {
                 studentListHTML = `${musicProgram.enrolled[0].firstName} ${musicProgram.enrolled[0].lastName}`

@@ -35,9 +35,9 @@ function renderStudentsTable(tbl, students) {
 
         const cellParent = document.createElement('td');
         if (student.parent === undefined) {
-            cellParent.innerHTML = 'None assigned.';
+            cellParent.innerHTML = '-';
         } else if (student.parent === null) {
-            cellParent.innerHTML = 'Parent was deleted.';
+            cellParent.innerHTML = 'DELETED';
         } else {
             cellParent.innerHTML = `${student.parent.firstName}`;
         }
@@ -45,9 +45,9 @@ function renderStudentsTable(tbl, students) {
 
         const cellCourse = document.createElement('td');
         if (student.course === undefined) {
-            cellCourse.innerHTML = 'Not enrolled yet.';
+            cellCourse.innerHTML = '-';
         } else if (student.course === null) {
-            cellCourse.innerHTML = 'Course was deleted.';
+            cellCourse.innerHTML = 'DELETED';
         } else {
             cellCourse.innerHTML = `<strong>${student.course.title}</strong><br>${student.course.day}<br>${student.course.time}`;
         }

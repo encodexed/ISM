@@ -48,7 +48,7 @@ const resetAll = async () => {
         lastName: 'West',
         email: 'adamwest65@gmail.com',
         contactNumber: '0492042864',
-        notes: ''
+        notes: '-'
     })
     await parent1.save();
 
@@ -78,7 +78,7 @@ const resetAll = async () => {
         firstName: 'Penelope',
         lastName: 'Chan',
         pianoGrade: '8th grade comprehensive',
-        theoryGrade: 'none',
+        theoryGrade: '-',
         dateOfBirth: '2010-05-23',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -88,8 +88,8 @@ const resetAll = async () => {
     const student2 = new Student({
         firstName: 'Felicity',
         lastName: 'Chan',
-        pianoGrade: 'none',
-        theoryGrade: 'none',
+        pianoGrade: '-',
+        theoryGrade: '-',
         dateOfBirth: '2003-11-23',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -100,7 +100,7 @@ const resetAll = async () => {
         firstName: 'Adem',
         lastName: 'Oksuz',
         pianoGrade: '3rd grade piano for leisure',
-        theoryGrade: 'none',
+        theoryGrade: '-',
         dateOfBirth: '1999-09-16',
         gender: 'Male',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -111,7 +111,7 @@ const resetAll = async () => {
         firstName: 'Mia',
         lastName: 'Flunt',
         pianoGrade: '3rd grade comprehensive',
-        theoryGrade: 'none',
+        theoryGrade: '-',
         dateOfBirth: '2004-10-04',
         gender: 'Female',
         notes: 'Must be scheduled on the same day as her sisters'
@@ -121,8 +121,8 @@ const resetAll = async () => {
     const student5 = new Student({
         firstName: 'James',
         lastName: 'Fang',
-        pianoGrade: 'none',
-        theoryGrade: 'none',
+        pianoGrade: '-',
+        theoryGrade: '-',
         dateOfBirth: '2002-05-24',
         gender: 'Male',
         notes: 'Must be scheduled on the same day as her sisters'

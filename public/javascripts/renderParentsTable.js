@@ -43,6 +43,9 @@ function renderParentsTable(tbl, parents) {
 
         const cellDependents = document.createElement('td');
         studentListHTML = '';
+        if (parent.dependents.length === 0) {
+            studentListHTML = '-';
+        }
         for (let i = 0; i < parent.dependents.length; i++) {
             if (i === 0 ) {
                 studentListHTML = `${parent.dependents[0].firstName} ${parent.dependents[0].lastName}`
