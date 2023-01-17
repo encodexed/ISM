@@ -71,6 +71,10 @@
                                         <% if (parent.dependents.length !== 0) { %>
                                             <strong>Dependents:</strong><br>
                                             <% for (let i = 0; i < parent.dependents.length; i++) { %> 
+                                                <% if (parent.dependents[i].firstName === null) { %>  
+                                                    Dependent DELETED.
+                                                    <% break; %> 
+                                                <% } %> 
                                                 <%= `${parent.dependents[i].firstName} ${parent.dependents[i].lastName}` %><br>
                                             <% } %> 
                                         <% } else { %> 
@@ -126,7 +130,11 @@
                                         Gender: <%= student.gender %><br>
 
                                         <% if (student.parent !== undefined) { %> 
-                                            <strong>Parent:</strong> <%= student.parent.firstName %> <%= student.parent.lastName %><br> 
+                                            <% if (student.parent === null) { %> 
+                                                <strong>Parent:</strong> DELETED.<br><br>
+                                            <% } else { %> 
+                                            <strong>Parent:</strong> <%= student.parent.firstName %> <%= student.parent.lastName %><br><br> 
+                                            <% } %> 
                                         <% } else { %> 
                                             <strong>Parent:</strong> None assigned.<br><br>
                                         <% } %> 

@@ -60,11 +60,10 @@
                 <div class="row form-floating mb-3">
                     <select class="form-select" id="gender" aria-label="Gender dropdown menu" name="student[gender]"
                         required>
-                        <option selected value="<%= student.gender %>"><%= student.gender %></option>
-                        <option value="Unsure">Unsure</option>
-                        <option value="Female">Female</option>
-                        <option value="Male">Male</option>
-                        <option value="Other">Other</option>
+                        <option id="Unsure" value="Unsure">Unsure</option>
+                        <option id="Female" value="Female">Female</option>
+                        <option id="Male" value="Male">Male</option>
+                        <option id="Other" value="Other">Other</option>
                     </select>
                     <div class="invalid-feedback">
                         Please choose an option.
@@ -90,7 +89,11 @@
         </div>
     </div>
 
-
+    <script>
+        addEventListener("load", (event) => {
+            document.getElementById("<%= student.gender %>").setAttribute("selected", "");
+        });
+    </script>
 
 
 
