@@ -3,19 +3,21 @@
 <h1 class="display-1 text-center">Admin Dashboard</h1>
 <p class="text-center">A visualisation of the database storing all information on music programs, parents and students.</p>
 
-<h1 class="display-5 text-center mb-3">Music Programs</h1>
+<h1 class="display-5 text-center mb-3">Music Programs<a class="btn btn-sm btn-success mx-3 mb-3" href="/admin/music_program/add_program">Add Program</a></h1>
 <table id="musicProgramsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
     <script src="/javascripts/renderMusicProgramsTable.js" type="text/javascript"></script>
     <script> renderMusicProgramsTable(document.getElementById('musicProgramsTable'), <%-JSON.stringify(musicPrograms)%>);</script>
 </table>
 
-<h1 class="display-5 text-center mb-3">Parents</h1>
+<h1 class="display-5 text-center mb-3">Parents<a class="btn btn-sm btn-success mx-3 mb-3" href="/admin/parent/add_parent">Add Parent</a></h1>
 <table id="parentsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
     <script src="/javascripts/renderParentsTable.js" type="text/javascript"></script>
     <script> renderParentsTable(document.getElementById('parentsTable'), <%-JSON.stringify(parents)%>);</script>
 </table>
 
-<h1 class="display-5 text-center mb-3">Students</h1>
+
+<h1 class="display-5 text-center mb-3">Students<a class="btn btn-sm btn-success mx-3 mb-3" href="/admin/student/add_student">Add Student</a></h1>
+    <!-- <a class="btn btn-sm btn-success mb-3" href="/admin/student/add_student">Add Student</a> -->
 <table id="studentsTable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
     <script src="/javascripts/renderStudentsTable.js" type="text/javascript"></script>
     <script> renderStudentsTable(document.getElementById('studentsTable'), <%-JSON.stringify(students)%>);</script>
