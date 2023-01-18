@@ -28,10 +28,18 @@
       </ul>
 
       <div class="navbar-nav ms-auto">
-        <a  href="/admin/enquiries" class="nav-link">Enquiries</a>
-        <a href="/admin/timetable" class="nav-link">Timetable</a>
-        <a href="/admin/index" class="nav-link">Index</a>
-        <a href="/admin/login" class="nav-link">Login</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/admin/index" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/admin/login" class="nav-link">Login</a></li>
+            <li><a  href="/admin/enquiries" class="nav-link">Enquiries</a></li>
+            <li><a href="/admin/timetable" class="nav-link">Timetable</a></li>
+            <li><a href="/admin/index" class="nav-link">Index</a></li>
+          </ul>
+        </li>
       </div>
     </div>
   </div>
