@@ -1,37 +1,85 @@
 function makeTimetable(tbl, musicPrograms) {
 
-    function makeTimeArray() {
-        let time = 900; // 9am start
-        let timeString = '900';
-        let appendAM = 'am';
-        const timeArray = [];
-
-        for (let i = 0; i < 49; i++) {
-            // Check if morning or afternoon/evening
-            if (time === 1200) {
-                appendAM = 'pm';
-            }
-            if (time === 1300) {
-                time = 100;
-            }
-
-            // Format time for display and export
-            if (timeString.length === 4) {
-                timeArray[i] = `${timeString.substring(0, 2)}:${timeString.substring(2, 4)}${appendAM}`;
-            } else {
-                timeArray[i] = `${timeString.substring(0, 1)}:${timeString.substring(1, 3)}${appendAM}`;
-            }
-
-            // Update time for next iteration
-            time += 15;
-            if (time.toString().endsWith('60') == true) {
-                time += 40;
-            }
-            timeString = time.toString();
+    function makeTimeArray(musicPrograms) {
+        
+        // Get times for all programs
+        const getTimes = new Array(musicPrograms.length);
+        for (let i = 0; i < musicPrograms.length; i++) {
+            getTimes[i] = musicPrograms[i].time;
         }
-        return timeArray;
+
+        // Check and delete duplicates
+        const trimmedTimeArray = [];
+        let index = 0;
+        for (let i = 0; i < getTimes.length - 1; i++) {
+            if (getTimes[i] !== getTimes[i + 1]) {
+                trimmedTimeArray[index] = getTimes[i];
+                index++;
+            }
+        }
+
+        // Sort into new array
+        const sortedArray = [];
+
+        for (let time of trimmedTimeArray) {
+            if (time.length === 6 && time.endsWith('am')) {
+                sortedArray.push(time);
+            }
+        }
+
+        for (let time of trimmedTimeArray) {
+            if (time.length === 7 && time.endsWith('am')) {
+                sortedArray.push(time);
+            }
+        }
+
+        for (let time of trimmedTimeArray) {
+            if (time.length === 7 && time.endsWith('pm') && time.startsWith('12')) {
+                sortedArray.push(time);
+            }
+        }
+
+        for (let time of trimmedTimeArray) {
+            if (time.length === 6 && time.endsWith('pm')) {
+                sortedArray.push(time);
+            }
+        }
+
+        return sortedArray;
+
+        // let time = 900; // 9am start
+        // let timeString = '900';
+        // let appendAM = 'am';
+        // const timeArray = [];
+
+        // for (let i = 0; i < 49; i++) {
+        //     // Check if morning or afternoon/evening
+        //     if (time === 1200) {
+        //         appendAM = 'pm';
+        //     }
+        //     if (time === 1300) {
+        //         time = 100;
+        //     }
+
+        //     // Format time for display and export
+        //     if (timeString.length === 4) {
+        //         timeArray[i] = `${timeString.substring(0, 2)}:${timeString.substring(2, 4)}${appendAM}`;
+        //     } else {
+        //         timeArray[i] = `${timeString.substring(0, 1)}:${timeString.substring(1, 3)}${appendAM}`;
+        //     }
+
+        //     // Update time for next iteration
+        //     time += 15;
+        //     if (time.toString().endsWith('60') == true) {
+        //         time += 40;
+        //     }
+        //     timeString = time.toString();
+        // }
+        // return timeArray;
     }
-    const timeArray = makeTimeArray();
+
+    const timeArray = makeTimeArray(musicPrograms);
+    console.log(timeArray);
 
     // Initialising the table elements
     const tblBody = document.createElement('tbody');

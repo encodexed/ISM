@@ -23,7 +23,8 @@ module.exports.renderAdminIndex = async (req, res) => {
 
 module.exports.renderAdminTimetable = async (req, res) => {
     const enquiries = await Enquiry.find({});
-    const musicPrograms = await MusicProgram.find({});
+    const musicPrograms = await MusicProgram.find({})
+        .sort({ "time": 1 });
     res.render('admin/timetable', { musicPrograms, enquiries });
 }
 
