@@ -46,36 +46,6 @@ function makeTimetable(tbl, musicPrograms) {
         }
 
         return sortedArray;
-
-        // let time = 900; // 9am start
-        // let timeString = '900';
-        // let appendAM = 'am';
-        // const timeArray = [];
-
-        // for (let i = 0; i < 49; i++) {
-        //     // Check if morning or afternoon/evening
-        //     if (time === 1200) {
-        //         appendAM = 'pm';
-        //     }
-        //     if (time === 1300) {
-        //         time = 100;
-        //     }
-
-        //     // Format time for display and export
-        //     if (timeString.length === 4) {
-        //         timeArray[i] = `${timeString.substring(0, 2)}:${timeString.substring(2, 4)}${appendAM}`;
-        //     } else {
-        //         timeArray[i] = `${timeString.substring(0, 1)}:${timeString.substring(1, 3)}${appendAM}`;
-        //     }
-
-        //     // Update time for next iteration
-        //     time += 15;
-        //     if (time.toString().endsWith('60') == true) {
-        //         time += 40;
-        //     }
-        //     timeString = time.toString();
-        // }
-        // return timeArray;
     }
 
     const timeArray = makeTimeArray(musicPrograms);
