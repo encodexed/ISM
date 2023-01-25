@@ -1,0 +1,14 @@
+<% layout('layouts/admin-boilerplate') %>
+<h1 class="text-4xl underline text-center pt-5">Parents</h1>
+<div class="flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 pt-5">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+                <table id="parentsTable" class="min-w-full">
+                    <script src="/javascripts/renderParentsTable.js" type="text/javascript"></script>
+                    <script> renderParentsTable(document.getElementById('parentsTable'), <%-JSON.stringify(parents) %>);</script>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

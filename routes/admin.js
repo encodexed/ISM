@@ -5,9 +5,6 @@ const admin = require('../controllers/admin');
 router.route('/login')
     .get(admin.renderAdminLogin);
 
-router.route('/index')
-    .get(admin.renderAdminIndex);
-
 router.route('/timetable')
     .get(admin.renderAdminTimetable);
 
@@ -25,6 +22,9 @@ router.route('/enquiries/:id/clear_enquiry')
 
 
 // Music programs
+
+router.route('/music_program/index')
+    .get(admin.renderMusicProgramIndex);
 
 router.route('/music_program/add_program')
     .get(admin.renderAddProgram)
@@ -46,6 +46,9 @@ router.route('/music_program/:id/unenrol_student')
 
 // Parents
 
+router.route('/parent/index')
+    .get(admin.renderParentIndex);
+
 router.route('/parent/add_parent')
     .get(admin.renderAddParent)
     .post(admin.createParent);
@@ -65,6 +68,9 @@ router.route('/parent/:id/remove_dependents')
     .put(admin.removeDependentFromParent);
 
 // Students
+
+router.route('/student/index')
+    .get(admin.renderStudentIndex);
 
 router.route('/student/add_student')
     .get(admin.renderAddStudent)

@@ -2,23 +2,10 @@ const MusicProgram = require('../models/musicProgram');
 const Parent = require('../models/parent');
 const Student = require('../models/student');
 const Enquiry = require('../models/enquiry');
+const { removeListener } = require('../models/musicProgram');
 
 module.exports.renderAdminLogin = (req, res) => {
     res.render('admin/login');
-}
-
-module.exports.renderAdminIndex = async (req, res) => {
-    const enquiries = await Enquiry.find({});
-    const musicPrograms = await MusicProgram.find({})
-        .populate('enrolled', 'firstName lastName');
-    const parents = await Parent.find({})
-        .populate('dependents', 'firstName lastName')
-        .sort({ "lastName": 1, "firstName": 1 });
-    const students = await Student.find({})
-        .populate('course', 'title day time')
-        .populate('parent', 'firstName lastName')
-        .sort({ "lastName": 1, "firstName": 1 });
-    res.render('admin/index', { musicPrograms, parents, students, enquiries });
 }
 
 module.exports.renderAdminTimetable = async (req, res) => {
@@ -71,6 +58,13 @@ module.exports.clearEnquiry = async (req, res) => {
 }
 
 // Music Programs
+
+module.exports.renderMusicProgramIndex = async (req, res) => {
+    const musicPrograms = await MusicProgram.find({})
+        .populate('enrolled', 'firstName lastName')
+        .sort({ "title": 1 });
+    res.render('admin/music_program/index', { musicPrograms });
+}
 
 module.exports.renderAddProgram = (req, res) => {
     res.render('admin/music_program/add_program');
@@ -192,6 +186,13 @@ module.exports.unenrolStudent = async (req, res) => {
 
 // Parents
 
+module.exports.renderParentIndex = async (req, res) => {
+    const parents = await Parent.find({})
+        .populate('dependents', 'firstName lastName')
+        .sort({ "lastName": 1, "firstName": 1 });
+    res.render('admin/parent/index', { parents });
+}
+
 module.exports.renderAddParent = (req, res) => {
     res.render('admin/parent/add_parent');
 }
@@ -305,6 +306,14 @@ module.exports.removeDependentFromParent = async(req, res) => {
 }
 
 // Students
+
+module.exports.renderStudentIndex = async (req, res) => {
+    const students = await Student.find({})
+        .populate('course', 'title day time')
+        .populate('parent', 'firstName lastName')
+        .sort({ "lastName": 1, "firstName": 1 });
+    res.render('admin/student/index', { students });
+}
 
 module.exports.renderAddStudent = (req, res) => {
     res.render('admin/student/add_student');
