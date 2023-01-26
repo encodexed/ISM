@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/admin-boilerplate') %>
     <div class="text-center">
         <h1>Edit a Program</h1>
         <p>Admins can manually edit a parent on this page.</p>
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-6 offset-3">
                 <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Parent</button>
-                <a class="btn btn-sm btn-secondary" href="/admin/index">Back</a>
+                <a class="btn btn-sm btn-secondary" href="/admin/parent/index">Back</a>
                 <form class="d-inline" action="/admin/parent/<%= parent._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
