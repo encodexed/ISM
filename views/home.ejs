@@ -1,3 +1,436 @@
-<% layout('layouts/boilerplate') %>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISM Leichhardt</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+</head>
 
-<h1 class="text-3xl">Home..?</h1>
+<body class="container-fluid text-center h-14 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+  <nav class="
+  relative
+  w-full
+  flex flex-wrap
+  items-center
+  justify-between
+  py-4
+  text-slate-300
+  hover:text-slate-50
+  focus:text-slate-300
+  navbar navbar-expand-lg navbar-light
+  ">
+  <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+  <button class="
+      navbar-toggler
+      text-gray-500
+      border-0
+      hover:shadow-none hover:no-underline
+      py-2
+      px-2.5
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+    " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+    class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+    <path fill="currentColor"
+      d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+    </path>
+  </svg>
+  </button>
+  <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+  <a class="
+        flex
+        items-center
+        text-gray-900
+        hover:text-gray-900
+        focus:text-gray-900
+        mt-2
+        lg:mt-0
+        mr-1
+      " href="#">
+    <img src="https://ismleichhardt.com.au/wp-content/uploads/2020/11/ISM-Logo-transparent.png" style="height: 40px" alt=""
+      loading="lazy" />
+  </a>
+  <!-- Left links -->
+  <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+    <li class="nav-item p-2">
+      <a class="nav-link text-slate-300 hover:text-slate-50 focus:text-slate-300 p-0" href="/">Home</a>
+    </li>
+    <li class="nav-item p-2">
+        <div class="dropdown relative">
+            <a class="nav-link dropdown-toggle flex items-center hidden-arrow p-0" href="#" id="dropdownMenuButton2" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              About <span role="img" aria-label="DownIcon" class="css-snhnyn" style="--icon-primary-color:var(--dynamic-icon); --icon-secondary-color: inherit;"><svg width="14" height="14" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path></svg></span>
+            </a>
+            <ul class="
+            dropdown-menu
+            min-w-max
+            absolute
+            hidden
+            bg-white
+            text-base
+            z-50
+            float-left
+            py-2
+            list-none
+            text-left
+            rounded-lg
+            shadow-lg
+            mt-1
+            hidden
+            m-0
+            bg-clip-padding
+            border-none
+            right-auto
+            left-0
+          " aria-labelledby="dropdownMenuButton2">
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+                " href="/programs/info">About Us</a>
+                </li>
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+                " href="/programs/info">Staff and Teachers</a>
+                </li>
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+                " href="/programs/enquiries">Gallery</a>
+                </li>
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/timetable">Job Applications</a>
+              </li>
+              <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/enquiries">Creative Kids Voucher</a>
+              </li>
+              <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/enquiries">Covid-19 Policies</a>
+              </li>
+              <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/enquiries">FAQ</a>
+              </li>
+            </ul>
+          </div>
+    </li>
+    <li class="nav-item p-2">
+        <div class="dropdown relative">
+            <a class="nav-link dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Lessons <span role="img" aria-label="DownIcon" class="css-snhnyn" style="--icon-primary-color:var(--dynamic-icon); --icon-secondary-color: inherit;"><svg width="14" height="14" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path></svg></span>
+            </a>
+            <ul class="
+            dropdown-menu
+            min-w-max
+            absolute
+            hidden
+            bg-white
+            text-base
+            z-50
+            float-left
+            py-2
+            list-none
+            text-left
+            rounded-lg
+            shadow-lg
+            mt-1
+            hidden
+            m-0
+            bg-clip-padding
+            border-none
+            right-auto
+            left-0
+          " aria-labelledby="dropdownMenuButton2">
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+                " href="/programs/info">Jitterbugs (2 year olds)</a>
+                </li>
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+                " href="/programs/info">Beeboppers (3 year olds)</a>
+                </li>
+                <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/timetable">Pianorama Junior (4-6 year olds)</a>
+              </li>
+              <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/enquiries">Pianorama Primary (7-12 year olds)</a>
+              </li>
+              <li>
+                <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="/programs/enquiries">Individual Lessons (all ages)</a>
+              </li>
+            </ul>
+          </div>
+    </li>
+    <li class="nav-item p-2">
+      <a class="nav-link text-slate-300 hover:text-slate-50 focus:text-slate-300 p-0" href="#">Enrolment</a>
+    </li>
+    <li class="nav-item p-2">
+      <a class="nav-link text-slate-300 hover:text-slate-50 focus:text-slate-300 p-0" href="/programs/enquiries">Contact Us</a>
+    </li>
+  </ul>
+  <!-- Left links -->
+  </div>
+  <!-- Collapsible wrapper -->
+
+  <!-- Right elements -->
+
+  <div class="flex items-center relative">
+  <div class="dropdown relative">
+    <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Admin  <span role="img" aria-label="DownIcon" class="css-snhnyn" style="--icon-primary-color:var(--dynamic-icon); --icon-secondary-color: inherit;"><svg width="14" height="14" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path></svg></span>
+    </a>
+    <ul class="
+    dropdown-menu
+    min-w-max
+    absolute
+    hidden
+    bg-white
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1
+    hidden
+    m-0
+    bg-clip-padding
+    border-none
+    left-auto
+    right-0
+  " aria-labelledby="dropdownMenuButton2">
+      <li>
+        <a class="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      " href="/admin/music_program/index">Dashboard</a>
+      </li>
+      <li>
+        <a class="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      " href="#">Logout</a>
+      </li>
+      <li>
+        <a class="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      " href="#">Login</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+  <!-- Right elements -->
+  </div>
+</nav>
+    
+    <div class="flex my-80">
+        <div class="w-1/5">
+            
+        </div>
+        <div class="w-3/5">
+            <div class="mb-5">
+                <h1 class="text-7xl mb-3" style="font-family: FS Kim;">Give the gift of music</h1>
+                <p class="text-xl">Ask for a paid trial or dive into one of our music programs today.</p>
+            </div>
+            <div class="mt-5">
+                <a href="/programs/info" type="button" class="mr-5 inline-block px-7 py-3 bg-blue-600 text-white 
+                font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg
+                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg
+                transition duration-150 ease-in-out">Learn More</a>
+                <a href="/admin/music_program/index" type="button" class="ml-5 inline-block px-7 py-3 bg-gray-200 
+                text-gray-700 font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 
+                hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                active:shadow-lg transition duration-150 ease-in-out">Admin Portal</a>
+            </div>
+        </div>
+        <div class="w-1/5">
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+</body>
