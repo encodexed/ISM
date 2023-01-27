@@ -20,13 +20,13 @@
       }
     </script>
 </head>
-    <%- include('../partials/navbar') %>
-    <%- include('../partials/admin-sidebar') %>
-    <%- body %>
-    <%- include('../partials/admin-footer') %>
 
-    <script src='/javascripts/validateForms.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 <body>
-    
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/admin-sidebar') %>
+  <%- include('../partials/flash') %>
+  <%- body %>
+
+  <script src='/javascripts/validateForms.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </body>
