@@ -1,90 +1,250 @@
 <% layout('layouts/admin-boilerplate') %>
-    <div class="text-center">
-        <h1>Edit a Student</h1>
-        <p>Admins can manually edit a student on this page.</p>
-    </div> 
 
-    <div class="card p-5 container col-md-6 offset-md-3">
-        <form id="editForm" action="/admin/student/<%= student._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
-            <section>
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="firstName" name="student[firstName]"
-                        placeholder="First Name" value="<%= student.firstName %>" required autofocus>
-                    <div class="invalid-feedback">
-                        Student requires a valid first name.
+    <h1 class="text-4xl text-center underline">Edit a student</h1>
+
+    <div class="flex my-10">
+        <div class="flex-1 w-1/2 mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">
+                                <%= student.firstName %> <%= student.lastName %>
+                            </h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Edit some information about the student here.
+                            </p>
+                        </div>
+                        <div class="my-5">
+                            <form id="editForm" action="/admin/student/<%= student._id %>?_method=PUT"
+                                method="POST" novalidate class="needs-validation">
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="firstName"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">First Name</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="firstName" placeholder="First Name" value="<%= student.firstName %>"
+                                            name="student[firstName]" required />
+                                        <div class="invalid-feedback">
+                                            Student requires a valid first name.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="lastName"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Last Name</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="lastName" placeholder="Last Name" value="<%= student.lastName %>"
+                                            name="student[lastName]" required />
+                                        <div class="invalid-feedback">
+                                            Student requires a valid lastName.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="pianoGrade"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Piano Grade</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="pianoGrade" placeholder="Piano Grade" value="<%= student.pianoGrade %>"
+                                            name="student[pianoGrade]" required />
+                                        <div class="invalid-feedback">
+                                            Student requires a valid piano grade.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="theoryGrade"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Theory Grade</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="theoryGrade" placeholder="Theory Grade" value="<%= student.theoryGrade %>"
+                                            name="student[theoryGrade]" required />
+                                        <div class="invalid-feedback">
+                                            Student requires a valid theory grade.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center">
+                                    <div class="datepicker relative form-control mb-3 xl:w-96" data-mdb-toggle-button="false">
+                                        <label for="floatingInput" class="text-gray-700">Date of Birth</label>
+                                        <input type="text" data-mdb-toggle="datepicker" name="student[dateOfBirth]"
+                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white 
+                                            bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 
+                                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            placeholder="Date of Birth" value="<%= student.dateOfBirth %>"/>
+                                        <div class="invalid-feedback">
+                                            Student requires a valid birthday.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="gender"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Gender</label>
+                                        <select class="form-select appearance-none
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-base
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding bg-no-repeat
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            aria-label="Gender dropdown menu" id="gender" name="student[gender]"
+                                            required>
+                                            <option id="Male" value="Male">Male</option>
+                                            <option id="Female" value="Female">Female</option>
+                                            <option id="Other" value="Other">Other</option>
+                                            <option id="Unsure" value="Unsure">Unsure</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid gender.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                      <label for="notes" class="form-label inline-block mb-2 text-gray-700 font-semibold"
+                                        >Student Notes</label
+                                      >
+                                      <textarea name="student[notes]"
+                                        class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        "
+                                        id="notes"
+                                        rows="3"
+                                        placeholder="Your message"
+                                      ><%= student.notes %></textarea>
+                                    </div>
+                                  </div>
+
+                                  <div class="flex space-x-2 justify-center mt-5">
+                                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                  </div>
+                            </form>
+                        </div>
                     </div>
-                    <label class="form-label" for="firstName">First Name</label>
                 </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="lastName" name="student[lastName]"
-                        placeholder="Last Name" value="<%= student.lastName %>" required>
-                    <div class="invalid-feedback">
-                        Student requires a valid last name.
+            </div>
+        </div>
+        <div class="flex-1 w-1/2 mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300 ">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Student Course</h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                This side shows details of the course the student is enrolled in.
+                            </p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-700 font-semibold">
+                                Some heading
+                            </p>
+                        </div>
                     </div>
-                    <label class="form-label" for="lastName">Last Name</label>
                 </div>
-
-                <p>
-                    <% if (student.course === undefined) { %> 
-                        <strong>Course:</strong> Not enrolled in any course.
-                    <% } else { %> 
-                        <strong>Course:</strong> <%= student.course.title %>, <%= student.course.day %> <%= student.course.time %>
-                    <% } %> 
-                </p>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="pianoGrade" name="student[pianoGrade]"
-                        placeholder="Piano Grade" value="<%= student.pianoGrade %>" required>
-                    <div class="invalid-feedback">
-                        Student requires a valid piano grade.
-                    </div>
-                    <label class="form-label" for="pianoGrade">Piano Grade</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="theoryGrade" name="student[theoryGrade]"
-                        placeholder="Theory Grade" value="<%= student.theoryGrade %>" required>
-                    <div class="invalid-feedback">
-                        Student requires a valid theory grade.
-                    </div>
-                    <label class="form-label" for="theoryGrade">Theory Grade</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="date" value="<%= student.dateOfBirth %>" id="dateOfBirth"
-                        name="student[dateOfBirth]" placeholder="Date of Birth">
-                    <label class="form-label" for="dateOfBirth">Date of Birth</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <select class="form-select" id="gender" aria-label="Gender dropdown menu" name="student[gender]"
-                        required>
-                        <option id="Unsure" value="Unsure">Unsure</option>
-                        <option id="Female" value="Female">Female</option>
-                        <option id="Male" value="Male">Male</option>
-                        <option id="Other" value="Other">Other</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please choose an option.
-                    </div>
-                    <label class="form-label" for="gender">Gender</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <textarea class="form-control" placeholder="Notes" id="notes"
-                        style="height: 150px" name="student[notes]"><%= student.notes %></textarea>
-                    <label class="form-label" for="notes">Notes</label>
-                </div>
-            </section>
-        </form>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Student</button>
-                <a class="btn btn-sm btn-secondary" href="/admin/student/index">Back</a>
-                <form class="d-inline" action="/admin/student/<%= student._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
             </div>
         </div>
     </div>
