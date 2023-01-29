@@ -36,6 +36,9 @@ router.route('/jitterbugs')
 router.route('/jobs')
     .get(ism.renderJobs);
 
+router.route('/lessons_overview')
+    .get(ism.renderLessonsOverview);
+
 router.route('/pianorama_junior')
     .get(ism.renderPianoramaJunior);
 

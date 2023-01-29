@@ -51,6 +51,10 @@ module.exports.renderJobs = (req, res) => {
     res.render('ism/jobs');
 }
 
+module.exports.renderLessonsOverview = (req, res) => {
+    res.render('ism/lessons_overview');
+}
+
 module.exports.renderPianoramaJunior = (req, res) => {
     res.render('ism/pianorama_junior');
 }
