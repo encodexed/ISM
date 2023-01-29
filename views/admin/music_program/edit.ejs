@@ -1,15 +1,280 @@
 <% layout('layouts/admin-boilerplate') %>
-    <div class="text-center">
+
+    <h1 class="text-4xl text-center underline">Edit a program</h1>
+
+    <div class="flex mt-10">
+        <div class="flex-1 w-1/2 border mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">
+                                <%= musicProgram.title %>
+                            </h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Edit some information about the program here.
+                            </p>
+                        </div>
+                        <div class="my-5">
+                            <form id="editForm" action="/admin/music_program/<%= musicProgram._id %>?_method=PUT"
+                                method="POST" novalidate class="needs-validation">
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="title"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Program
+                                            Title</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="title" placeholder="Program Title" value="<%= musicProgram.title %>"
+                                            name="musicProgram[title]" required />
+                                        <div class="invalid-feedback">
+                                            Music program requires a valid title.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="day"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Day</label>
+                                        <select class="form-select appearance-none
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-base
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding bg-no-repeat
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            aria-label="Day dropdown menu" id="day" name="musicProgram[day]">
+                                            <option id="Monday" value="Monday">Monday</option>
+                                            <option id="Tuesday" value="Tuesday">Tuesday</option>
+                                            <option id="Wednesday" value="Wednesday">Wednesday</option>
+                                            <option id="Thursday" value="Thursday">Thursday</option>
+                                            <option id="Friday" value="Friday">Friday</option>
+                                            <option id="Saturday" value="Saturday">Saturday</option>
+                                            <option id="Sunday" value="Sunday">Sunday</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a day.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="timepicker relative form-control mb-3 xl:w-96"
+                                        data-mdb-with-icon="false" id="input-toggle-timepicker">
+                                        <label for="time"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Time</label>
+                                        <input type="text" id="time" name="musicProgram[time]"
+                                            value="<%= musicProgram.time %>"
+                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding 
+                                        border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            placeholder="Select a time" data-mdb-toggle="input-toggle-timepicker" />
+                                        <div class="invalid-feedback">
+                                            Music program requires a valid time.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="duration"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Duration</label>
+                                        <input type="text" name="musicProgram[duration]" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="duration" placeholder="Duration" value="<%= musicProgram.duration %>"
+                                            name="musicProgram[duration]" required />
+                                        <div class="invalid-feedback">
+                                            Music program requires a valid duration.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="teacher"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Teacher</label>
+                                        <input type="text" name="musicProgram[teacher]" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="teacher" placeholder="Teacher" value="<%= musicProgram.teacher %>"
+                                            name="musicProgram[teacher]" required />
+                                        <div class="invalid-feedback">
+                                            Music program requires a valid teacher.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="room"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Room</label>
+                                        <select class="form-select appearance-none
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-base
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding bg-no-repeat
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            aria-label="Room dropdown menu" id="room" name="musicProgram[room]"
+                                            required>
+                                            <option id="Group" value="Group">Group</option>
+                                            <option id="1" value="1">1</option>
+                                            <option id="2" value="2">2</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid room.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                      <label for="notes" class="form-label inline-block mb-2 text-gray-700 font-semibold"
+                                        >Program Notes</label
+                                      >
+                                      <textarea name="musicProgram[notes]"
+                                        class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        "
+                                        id="notes"
+                                        rows="3"
+                                        placeholder="Your message"
+                                      ><%= musicProgram.notes %></textarea>
+                                    </div>
+                                  </div>
+
+                                  <div class="flex space-x-2 justify-center mt-5">
+                                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                  </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 w-1/2 border mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6">
+                        <h5 class="text-gray-900 text-xl font-medium mb-2">Enrolled Students</h5>
+                        <p class="text-gray-700 text-base mb-4">
+                            Add or remove students from the program on this side.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        addEventListener("load", (event) => {
+            document.getElementById("</%= musicProgram.room %>").setAttribute("selected", "");
+            document.getElementById("<%= musicProgram.day %>").setAttribute("selected", "");
+        });
+    </script>
+
+
+
+
+    <!-- <div class="text-center">
         <h1>Edit a Program</h1>
         <p>Admins can manually edit a music program on this page.</p>
     </div> 
 
     <div class="card p-5 container col-md-6 offset-md-3">
-        <form id="editForm" action="/admin/music_program/<%= musicProgram._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
+        <form id="editForm" action="/admin/music_program/</%= musicProgram._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
             <section>
                 <div class="row form-floating mb-3">
                     <input class="form-control" type="text" id="title" name="musicProgram[title]"
-                        placeholder="Title" value="<%= musicProgram.title %>" required autofocus>
+                        placeholder="Title" value="</%= musicProgram.title %>" required autofocus>
                     <div class="invalid-feedback">
                         Music program requires a valid title.
                     </div>
@@ -35,7 +300,7 @@
 
                 <div class="row form-floating mb-3">
                     <input class="form-control" type="text" id="time" name="musicProgram[time]"
-                        placeholder="Time" value="<%= musicProgram.time %>" required>
+                        placeholder="Time" value="</%= musicProgram.time %>" required>
                     <div class="invalid-feedback">
                         Music program requires a valid time.
                     </div>
@@ -44,7 +309,7 @@
 
                 <div class="row form-floating mb-3">
                     <input class="form-control" type="text" id="duration" name="musicProgram[duration]"
-                        placeholder="Duration" value="<%= musicProgram.duration %>" required>
+                        placeholder="Duration" value="</%= musicProgram.duration %>" required>
                     <div class="invalid-feedback">
                         Music program requires a valid duration.
                     </div>
@@ -53,7 +318,7 @@
 
                 <div class="row form-floating mb-3">
                     <input class="form-control" type="text" id="teacher" name="musicProgram[teacher]"
-                        placeholder="Teacher" value="<%= musicProgram.teacher %>" required>
+                        placeholder="Teacher" value="</%= musicProgram.teacher %>" required>
                     <div class="invalid-feedback">
                         Music program requires a valid teacher.
                     </div>
@@ -75,7 +340,7 @@
 
                 <div class="row form-floating mb-3">
                     <textarea class="form-control" placeholder="Notes" id="notes"
-                        style="height: 150px" name="musicProgram[notes]"><%= musicProgram.notes %></textarea>
+                        style="height: 150px" name="musicProgram[notes]"></%= musicProgram.notes %></textarea>
                     <label class="form-label" for="notes">Notes</label>
                 </div>
             </section>
@@ -84,16 +349,9 @@
             <div class="col-6 offset-3">
                 <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Program</button>
                 <a class="btn btn-sm btn-secondary" href="/admin/music_program/index">Back</a>
-                <form class="d-inline" action="/admin/music_program/<%= musicProgram._id %>?_method=DELETE" method="POST">
+                <form class="d-inline" action="/admin/music_program/</%= musicProgram._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
             </div>
         </div>
-    </div>
-
-<script>
-    addEventListener("load", (event) => {
-        document.getElementById("<%= musicProgram.room %>").setAttribute("selected", "");
-        document.getElementById("<%= musicProgram.day %>").setAttribute("selected", "");
-    });
-</script>
+    </div> -->
