@@ -54,12 +54,10 @@ app.use((req, res, next) => {
 
 // Routes
 
-const defaultRoutes = require('./routes/default');
-const programsRoutes = require('./routes/programs');
+const ismRoutes = require('./routes/ism');
 const adminRoutes = require('./routes/admin');
 
-app.use('/', defaultRoutes);
-app.use('/programs', programsRoutes);
+app.use('/ism', ismRoutes);
 app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
