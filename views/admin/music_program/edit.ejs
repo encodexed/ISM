@@ -2,8 +2,8 @@
 
     <h1 class="text-4xl text-center underline">Edit a program</h1>
 
-    <div class="flex mt-10">
-        <div class="flex-1 w-1/2 border mx-5">
+    <div class="flex my-10">
+        <div class="flex-1 w-1/2 mx-5">
             <div class="flex justify-center">
                 <div class="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href="#!">
@@ -102,8 +102,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
 
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
@@ -228,14 +226,13 @@
                                     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
                                     active:shadow-lg transition duration-150 ease-in-out">Update</button>
                                   </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex-1 w-1/2 border mx-5">
+        <div class="flex-1 w-1/2 mx-5">
             <div class="flex justify-center">
                 <div class="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href="#!">
@@ -243,11 +240,18 @@
                             src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
                             alt="" />
                     </a>
-                    <div class="p-6">
-                        <h5 class="text-gray-900 text-xl font-medium mb-2">Enrolled Students</h5>
-                        <p class="text-gray-700 text-base mb-4">
-                            Add or remove students from the program on this side.
-                        </p>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300 ">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Enrolled Students</h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Add or remove students from the program on this side.
+                            </p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-700 font-semibold">
+                                Add
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,102 +260,7 @@
 
     <script>
         addEventListener("load", (event) => {
-            document.getElementById("</%= musicProgram.room %>").setAttribute("selected", "");
+            document.getElementById("<%= musicProgram.room %>").setAttribute("selected", "");
             document.getElementById("<%= musicProgram.day %>").setAttribute("selected", "");
         });
     </script>
-
-
-
-
-    <!-- <div class="text-center">
-        <h1>Edit a Program</h1>
-        <p>Admins can manually edit a music program on this page.</p>
-    </div> 
-
-    <div class="card p-5 container col-md-6 offset-md-3">
-        <form id="editForm" action="/admin/music_program/</%= musicProgram._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
-            <section>
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="title" name="musicProgram[title]"
-                        placeholder="Title" value="</%= musicProgram.title %>" required autofocus>
-                    <div class="invalid-feedback">
-                        Music program requires a valid title.
-                    </div>
-                    <label class="form-label" for="title">Title</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <select class="form-select" id="day" aria-label="Day dropdown menu"
-                        name="musicProgram[day]" required>
-                        <option id="Monday" value="Monday">Monday</option>
-                        <option id="Tuesday" value="Tuesday">Tuesday</option>
-                        <option id="Wednesday" value="Wednesday">Wednesday</option>
-                        <option id="Thursday" value="Thursday">Thursday</option>
-                        <option id="Friday" value="Friday">Friday</option>
-                        <option id="Saturday" value="Saturday">Saturday</option>
-                        <option id="Sunday" value="Sunday">Sunday</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a day.
-                    </div>
-                    <label class="form-label" for="day">Day</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="time" name="musicProgram[time]"
-                        placeholder="Time" value="</%= musicProgram.time %>" required>
-                    <div class="invalid-feedback">
-                        Music program requires a valid time.
-                    </div>
-                    <label class="form-label" for="time">Time</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="duration" name="musicProgram[duration]"
-                        placeholder="Duration" value="</%= musicProgram.duration %>" required>
-                    <div class="invalid-feedback">
-                        Music program requires a valid duration.
-                    </div>
-                    <label class="form-label" for="duration">Duration</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="teacher" name="musicProgram[teacher]"
-                        placeholder="Teacher" value="</%= musicProgram.teacher %>" required>
-                    <div class="invalid-feedback">
-                        Music program requires a valid teacher.
-                    </div>
-                    <label class="form-label" for="teacher">Teacher</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <select class="form-select" id="room" aria-label="Room dropdown menu"
-                        name="musicProgram[room]" required>
-                        <option id="Group" value="Group">Group</option>
-                        <option id="1" value="1">1</option>
-                        <option id="2" value="2">2</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a room.
-                    </div>
-                    <label class="form-label" for="room">Room</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <textarea class="form-control" placeholder="Notes" id="notes"
-                        style="height: 150px" name="musicProgram[notes]"></%= musicProgram.notes %></textarea>
-                    <label class="form-label" for="notes">Notes</label>
-                </div>
-            </section>
-        </form>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Program</button>
-                <a class="btn btn-sm btn-secondary" href="/admin/music_program/index">Back</a>
-                <form class="d-inline" action="/admin/music_program/</%= musicProgram._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
-            </div>
-        </div>
-    </div> -->

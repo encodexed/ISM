@@ -1,62 +1,205 @@
 <% layout('layouts/admin-boilerplate') %>
-    <div class="text-center">
-        <h1>Edit a Program</h1>
-        <p>Admins can manually edit a parent on this page.</p>
-    </div> 
 
-    <div class="card p-5 container col-md-6 offset-md-3">
-        <form id="editForm" action="/admin/parent/<%= parent._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
-            <section>
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="firstName" name="parent[firstName]"
-                        placeholder="First Name" value="<%= parent.firstName %>" required autofocus>
-                    <div class="invalid-feedback">
-                        Parent requires a valid first name.
+    <h1 class="text-4xl text-center underline">Edit a program</h1>
+
+    <div class="flex my-10">
+        <div class="flex-1 w-1/2 mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1516050327434-9d06ea9bfae8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3301&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">
+                                <%= parent.firstName %> <%= parent.lastName %>
+                            </h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Edit some information about the parent here.
+                            </p>
+                        </div>
+                        <div class="my-5">
+                            <form id="editForm" action="/admin/parent/<%= parent._id %>?_method=PUT"
+                                method="POST" novalidate class="needs-validation">
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="firstName"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">First Name</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="firstName" placeholder="First Name" value="<%= parent.firstName %>"
+                                            name="parent[firstName]" required />
+                                        <div class="invalid-feedback">
+                                            Parent requires a valid first name.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="lastName"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Last Name</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="lastName" placeholder="Last Name" value="<%= parent.lastName %>"
+                                            name="parent[lastName]" required />
+                                        <div class="invalid-feedback">
+                                            Parent requires a valid last name.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="email"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Email</label>
+                                        <input type="email" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="email" placeholder="Email" value="<%= parent.email %>"
+                                            name="parent[email]" required />
+                                        <div class="invalid-feedback">
+                                            Parent requires a valid email.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <label for="contactNumber"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Contact Number</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="contactNumber" placeholder="Contact number" value="<%= parent.contactNumber %>"
+                                            name="parent[contactNumber]" required />
+                                        <div class="invalid-feedback">
+                                            Parent requires a valid contact number.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                      <label for="notes" class="form-label inline-block mb-2 text-gray-700 font-semibold"
+                                        >Parent Notes</label
+                                      >
+                                      <textarea name="parent[notes]"
+                                        class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        "
+                                        id="notes"
+                                        rows="3"
+                                        placeholder="Notes"
+                                      ><%= parent.notes %></textarea>
+                                    </div>
+                                  </div>
+
+                                  <div class="flex space-x-2 justify-center mt-5">
+                                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                  </div>
+
+                            </form>
+                        </div>
                     </div>
-                    <label class="form-label" for="firstName">First Name</label>
                 </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="text" id="lastName" name="parent[lastName]"
-                        placeholder="Last Name" value="<%= parent.lastName %>" required>
-                    <div class="invalid-feedback">
-                        Parent requires a valid last name.
+            </div>
+        </div>
+        <div class="flex-1 w-1/2 mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6 text-center">
+                        <div class="border-b border-gray-300 ">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Enrolled Students</h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Add or remove students from the program on this side.
+                            </p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-700 font-semibold">
+                                Add
+                            </p>
+                        </div>
                     </div>
-                    <label class="form-label" for="lastName">Last Name</label>
                 </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="email" id="email" name="parent[email]"
-                        placeholder="Email" value="<%= parent.email %>" required>
-                    <div class="invalid-feedback">
-                        Parent requires a valid email.
-                    </div>
-                    <label class="form-label" for="email">Email</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <input class="form-control" type="tel" id="contactNumber" name="parent[contactNumber]"
-                        placeholder="Contact Number" value="<%= parent.contactNumber %>" required>
-                    <div class="invalid-feedback">
-                        Parent requires a valid contact number.
-                    </div>
-                    <label class="form-label" for="contactNumber">Contact Number</label>
-                </div>
-
-                <div class="row form-floating mb-3">
-                    <textarea class="form-control" placeholder="Notes" id="notes"
-                        style="height: 150px" name="parent[notes]"><%= parent.notes %></textarea>
-                    <label class="form-label" for="notes">Notes</label>
-                </div>
-            </section>
-        </form>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <button type="submit" form="editForm" class="btn btn-sm btn-primary">Edit Parent</button>
-                <a class="btn btn-sm btn-secondary" href="/admin/parent/index">Back</a>
-                <form class="d-inline" action="/admin/parent/<%= parent._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
             </div>
         </div>
     </div>
