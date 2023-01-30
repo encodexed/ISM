@@ -1,6 +1,6 @@
 <% layout('layouts/admin-boilerplate') %>
 
-    <h1 class="text-4xl text-center underline">Edit a program</h1>
+    <h1 class="text-4xl text-center underline">Edit a parent</h1>
 
     <div class="flex my-10">
         <div class="flex-1 w-1/2 mx-5">
@@ -8,7 +8,7 @@
                 <div class="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href="#!">
                         <img class="rounded-t-lg"
-                            src="https://images.unsplash.com/photo-1516050327434-9d06ea9bfae8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3301&q=80"
+                            src="https://images.unsplash.com/photo-1629360067822-89c74b25bb66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
                             alt="" />
                     </a>
                     <div class="p-6 text-center">
@@ -21,12 +21,13 @@
                             </p>
                         </div>
                         <div class="my-5">
-                            <form id="editForm" action="/admin/parent/<%= parent._id %>?_method=PUT"
-                                method="POST" novalidate class="needs-validation">
+                            <form id="editForm" action="/admin/parent/<%= parent._id %>?_method=PUT" method="POST"
+                                novalidate class="needs-validation">
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
                                         <label for="firstName"
-                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">First Name</label>
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">First
+                                            Name</label>
                                         <input type="text" class="
                                           form-control
                                           block
@@ -54,7 +55,8 @@
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
                                         <label for="lastName"
-                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Last Name</label>
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Last
+                                            Name</label>
                                         <input type="text" class="
                                           form-control
                                           block
@@ -110,7 +112,8 @@
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
                                         <label for="contactNumber"
-                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Contact Number</label>
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Contact
+                                            Number</label>
                                         <input type="text" class="
                                           form-control
                                           block
@@ -127,8 +130,8 @@
                                           ease-in-out
                                           m-0
                                           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                                        " id="contactNumber" placeholder="Contact number" value="<%= parent.contactNumber %>"
-                                            name="parent[contactNumber]" required />
+                                        " id="contactNumber" placeholder="Contact number"
+                                            value="<%= parent.contactNumber %>" name="parent[contactNumber]" required />
                                         <div class="invalid-feedback">
                                             Parent requires a valid contact number.
                                         </div>
@@ -137,11 +140,10 @@
 
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
-                                      <label for="notes" class="form-label inline-block mb-2 text-gray-700 font-semibold"
-                                        >Parent Notes</label
-                                      >
-                                      <textarea name="parent[notes]"
-                                        class="
+                                        <label for="notes"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Parent
+                                            Notes</label>
+                                        <textarea name="parent[notes]" class="
                                           form-control
                                           block
                                           w-full
@@ -157,20 +159,16 @@
                                           ease-in-out
                                           m-0
                                           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                                        "
-                                        id="notes"
-                                        rows="3"
-                                        placeholder="Notes"
-                                      ><%= parent.notes %></textarea>
+                                        " id="notes" rows="3" placeholder="Notes"><%= parent.notes %></textarea>
                                     </div>
-                                  </div>
+                                </div>
 
-                                  <div class="flex space-x-2 justify-center mt-5">
+                                <div class="flex space-x-2 justify-center mt-5">
                                     <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
                                     text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
                                     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
                                     active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                  </div>
+                                </div>
 
                             </form>
                         </div>
@@ -186,17 +184,122 @@
                             src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
                             alt="" />
                     </a>
-                    <div class="p-6 text-center">
-                        <div class="border-b border-gray-300 ">
-                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Enrolled Students</h2>
+                    <div class="p-6">
+                        <div class="border-b border-gray-300">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Dependents</h2>
                             <p class="text-gray-700 text-sm mb-4">
-                                Add or remove students from the program on this side.
+                                Add or remove dependents from the parent on this side.
                             </p>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-700 font-semibold">
-                                Add
+                            <p class="text-gray-700 font-semibold mb-5">
+                                Add Dependent:
                             </p>
+                            <form action="/admin/parent/<%= parent._id %>/add_dependents?_method=PUT" method="POST">
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <select class="form-select appearance-none
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-base
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding bg-no-repeat
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            aria-label="Default select example" name="student[firstName]" required>
+                                            <option selected>First name</option>
+                                            <% for (let student of students) { %>
+                                                <% if (student.parent === undefined) { %>
+                                                    <option><%= student.firstName %></option>
+                                                <% } %>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
+                                        <select class="form-select appearance-none
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-base
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding bg-no-repeat
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            aria-label="Default select example" name="student[lastName]" required>
+                                            <option selected>Last name</option>
+                                            <% for (let student of students) { %>
+                                                <% if (student.parent === undefined) { %>
+                                                    <option><%= student.lastName %></option>
+                                                <% } %>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex space-x-2 justify-center mt-5">
+                                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out">Add to parent</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <% if (parent.dependents.length === 0) { %>
+                                <h5 class="text-red-500 font-semibold mb-5">
+                                    No dependents yet!
+                                </h5>
+                                <p class="text-gray-700 text-sm mb-4">
+                                    Once a dependent has been assigned to the parent, they will show up here.
+                                </p>
+                                
+                            <% } else { %>
+                                <% for (let i = 0; i < parent.dependents.length; i++) { %>
+                                    <div class="p-6 border-t border-gray-300">
+                                        <p class="text-xl text-gray-700 font-semibold mb-4 text-center">
+                                            <%= parent.dependents[i].firstName %> <%= parent.dependents[i].lastName %>
+                                        </p>
+                                        <p class="text-gray-700 text-sm mb-4">
+                                            <% if (parent.dependents[i].course !== undefined) { %> 
+                                                <strong>Course:</strong> <%= parent.dependents[i].course.title %><br>
+                                                <strong>Day:</strong> <%= parent.dependents[i].course.day %><br>
+                                                <strong>Time:</strong> <%= parent.dependents[i].course.time %><br>
+                                                <br>
+                                            <% } else { %> 
+                                                <strong>Course:</strong> Not enrolled yet.<br>
+                                                <br>
+                                            <% } %> 
+                                            <strong>Piano grade:</strong> <%= parent.dependents[i].pianoGrade %><br>
+                                            <strong>Theory grade:</strong> <%= parent.dependents[i].theoryGrade %><br>
+                                            <strong>DOB:</strong> <%= parent.dependents[i].dateOfBirth %><br>
+                                            <strong>Gender:</strong> <%= parent.dependents[i].gender %><br>
+                                            <strong>Notes:</strong> <%= parent.dependents[i].notes %><br>
+                                        </p>
+                                        <div class="text-center mt-5 mb-3">
+                                            <form action="/admin/parent/<%= parent._id %>/remove_dependents/<%= parent.dependents[i]._id %>?_method=PUT" method="POST">
+                                                <button type="submit" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium 
+                                                text-xs leading-tight uppercase rounded shadow-md hover:bg-red-800 hover:shadow-lg 
+                                                focus:bg-red-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 
+                                                active:shadow-lg transition duration-150 ease-in-out">Remove from parent</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                <% } %> 
+                            <% } %> 
                         </div>
                     </div>
                 </div>

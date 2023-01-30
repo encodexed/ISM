@@ -24,13 +24,13 @@ const job = new CronJob(
         let hours = date_ob.getHours();
         let minutes = date_ob.getMinutes();
         // let seconds = date_ob.getSeconds();
-        console.log(`Ding! The current time is ${hours}:${minutes}, ${date}/${month}/${year}`);
-        console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes);
-		console.log('You will see this message at :15 of every hour. Perhaps a method could be written to backup your database in this time.');
+        console.log(`Ding! The current time is ${hours}:${minutes}, ${date}/${month}/${year}.`);
+        console.log('You will see this message at :15 of every hour.');
+        console.log('Perhaps a method could be written to backup your database in this time.')
 	},
 	null,
 	true,
-	'America/Los_Angeles'
+	'Australia/Sydney'
 );
 
 mongoose.set('strictQuery', true); // suppresses deprecation warning
