@@ -3,12 +3,66 @@
     <h1 class="text-4xl text-center underline">Edit a student</h1>
 
     <div class="flex my-10">
-        <div class="flex-1 w-1/2 mx-5">
+        <div class="flex-1 mx-5">
             <div class="flex justify-center">
                 <div class="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href="#!">
                         <img class="rounded-t-lg"
-                            src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80"
+                            src="https://images.unsplash.com/photo-1629360067822-89c74b25bb66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            alt="" />
+                    </a>
+                    <div class="p-6">
+                        <div class="border-b border-gray-300 text-center">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Parent Information</h2>
+                            <p class="text-gray-700 text-sm mb-4">
+                                This card shows details of the parent or primary carer, if there is one associated in the database.
+                            </p>
+                        </div>
+
+                        <% if (!student.parent) { %>
+                            <div class="p-6">
+                                <p class="text-gray-700 font-semibold mb-3">
+                                    No Parent on Record
+                                </p>
+                                <p class="text-gray-700 text-sm mb-4">
+                                    If you believe that the student's parent is already in the database, you may need to 
+                                    update the parent's information to show a relationship with the student.
+                                </p>
+                                <div class="text-center mt-5">
+                                    <a type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out" href="/admin/parent/index">Go to parent index</a>
+                                </div>
+                            </div>
+                        <% } else { %> 
+                            <div class="p-6">
+                                <p class="text-xl text-gray-700 font-semibold mb-4 text-center">
+                                    <%= student.parent.firstName %> <%= student.parent.lastName %>
+                                </p>
+                                <p class="text-gray-700 text-sm mb-4">
+                                    <strong>Email:</strong> <%= student.parent.email %><br>
+                                    <strong>Contact:</strong> <%= student.parent.contactNumber %><br>
+                                    <strong>Notes:</strong> <%= student.parent.notes %>
+                                </p>
+                                <div class="text-center mt-5">
+                                    <a type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out" href="/admin/parent/<%= student.parent._id %>/edit">Go to parent</a>
+                                </div>
+                            </div>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 mx-5">
+            <div class="flex justify-center">
+                <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                    <a href="#!">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
                             alt="" />
                     </a>
                     <div class="p-6 text-center">
@@ -183,6 +237,36 @@
 
                                 <div class="flex justify-center">
                                     <div class="mb-3 xl:w-96">
+                                        <label for="parent"
+                                            class="form-label inline-block mb-2 text-gray-700 font-semibold">Parent</label>
+                                        <input type="text" class="
+                                          form-control
+                                          block
+                                          w-full
+                                          px-3
+                                          py-1.5
+                                          text-base
+                                          font-normal
+                                          text-gray-700
+                                          bg-white bg-clip-padding
+                                          border border-solid border-gray-300
+                                          rounded
+                                          transition
+                                          ease-in-out
+                                          m-0
+                                          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                                        " id="parent" disabled 
+                                        <% if (!student.parent) { %> 
+                                            placeholder="None"
+                                        <% } else { %> 
+                                            placeholder="<%= student.parent.firstName %> <%= student.parent.lastName %>"
+                                        <% } %> 
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center">
+                                    <div class="mb-3 xl:w-96">
                                       <label for="notes" class="form-label inline-block mb-2 text-gray-700 font-semibold"
                                         >Student Notes</label
                                       >
@@ -223,30 +307,62 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 w-1/2 mx-5">
+        <div class="flex-1 mx-5">
             <div class="flex justify-center">
                 <div class="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href="#!">
                         <img class="rounded-t-lg"
-                            src="https://images.unsplash.com/photo-1554721299-e0b8aa7666ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80"
                             alt="" />
                     </a>
-                    <div class="p-6 text-center">
-                        <div class="border-b border-gray-300 ">
-                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Student Course</h2>
+                    <div class="p-6">
+                        <div class="border-b border-gray-300 text-center">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2">Course Information</h2>
                             <p class="text-gray-700 text-sm mb-4">
-                                This side shows details of the course the student is enrolled in.
+                                This card shows details of the course the student is enrolled in, if there is one associated in the database.
                             </p>
                         </div>
-                        <div class="p-6">
-                            <p class="text-gray-700 font-semibold">
-                                Some heading
-                            </p>
-                        </div>
+
+                        <% if (!student.course) { %>
+                            <div class="p-6">
+                                <p class="text-gray-700 font-semibold mb-3">
+                                    No course on Record
+                                </p>
+                                <p class="text-gray-700 text-sm mb-4">
+                                    If you believe that the student's parent is already in the database, you may need to 
+                                    update the parent's information to show a relationship with the student.
+                                </p>
+                                <div class="text-center mt-5">
+                                    <a type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out" href="/admin/music_program/index">Go to course index</a>
+                                </div>
+                            </div>
+                        <% } else { %> 
+                            <div class="p-6">
+                                <p class="text-xl text-gray-700 font-semibold mb-4 text-center">
+                                    <%= student.course.title %>
+                                </p>
+                                <p class="text-gray-700 text-sm mb-4">
+                                    <strong>Day:</strong> <%= student.course.day %><br>
+                                    <strong>Time:</strong> <%= student.course.time %><br>
+                                    <strong>Duration:</strong> <%= student.course.duration %><br>
+                                    <strong>Teacher:</strong> <%= student.course.teacher %><br>
+                                    <strong>Room:</strong> <%= student.course.room %><br>
+                                    <strong>Notes:</strong> <%= student.course.notes %><br>
+                                </p>
+                                <div class="text-center mt-5">
+                                    <a type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out" href="/admin/music_program/<%= student.course._id %>/edit">Go to course</a>
+                                </div>
+                            </div>
+                        <% } %> 
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <script>
