@@ -1,5 +1,18 @@
 <% layout('layouts/admin-boilerplate') %>
-<h1 class="text-4xl underline text-center pt-5">Parents</h1>
+<div class="text-center">
+    <h1 class="text-4xl underline pt-5">Parents</h1>
+    <p class="text-sm mt-3">
+        On this page, you will find a summary table of all existing parents. Following the links on the side,<br>
+        you can edit each parent's details, or delete parents, as well as add or remove dependents from their care.<br>
+        You can also create new parent entries below.
+    </p>
+    <div class="text-center mt-5">
+        <a type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium 
+        text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+        focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+        active:shadow-lg transition duration-150 ease-in-out" href="/admin/parent/add_parent">Create new parent</a>
+    </div>
+</div>
 <div class="flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 pt-5">
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">

@@ -16,10 +16,10 @@ const StudentSchema = new Schema({
     parent: { type: Schema.Types.ObjectID, ref: 'Parent' }
 })
 
-StudentSchema.virtual('formattedDOB').get(function () {
-    const dobArray = this.dateOfBirth.split('-');
-    return `${dobArray[2]}/${dobArray[1]}/${dobArray[0]}`;
-})
+// StudentSchema.virtual('formattedDOB').get(function () {
+//     const dobArray = this.dateOfBirth.split('-');
+//     return `${dobArray[2]}/${dobArray[1]}/${dobArray[0]}`;
+// })
 
 StudentSchema.virtual('fullName').get(function () {
     return `${this.firstName} ${this.lastName}`;
