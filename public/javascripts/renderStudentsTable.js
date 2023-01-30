@@ -86,7 +86,10 @@ function renderStudentsTable(tbl, students) {
 
         const cellActions = document.createElement('td');
         cellActions.className = 'text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap';
-        cellActions.innerHTML = `<a type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" href="/admin/student/${student._id}/edit">Edit</a>`;
+        cellActions.innerHTML = `<a type="button" class="inline-block px-6 py-2.5 bg-purple-600 
+        text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-800
+        hover:shadow-lg focus:bg-purple-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-900
+        active:shadow-lg transition duration-150 ease-in-out" href="/admin/student/${student._id}/edit">Edit</a>`;
         tblRow.appendChild(cellActions);
 
         tblBody.appendChild(tblRow);
