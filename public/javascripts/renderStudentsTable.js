@@ -2,15 +2,15 @@ function renderStudentsTable(tbl, students) {
 
     // Initialising the table elements
     const tblBody = document.createElement('tbody');
-    tblBody.className = 'table-group-divider';
+    tblBody.className = '';
     const tblHead = document.createElement('thead');
-    tblHead.className = 'bg-white border-b';
+    tblHead.className = '';
     const tblHeadRow = document.createElement('tr');
     tblHeadRow.className = '';
 
     // Creating the header row
     const headers = ['Last Name', 'First Name', 'Parent', 'Course', 'Piano', 'Theory', 'Notes', 'DOB', 'Gender', 'Actions'];
-    const cellWidth = ['10%', '10%', '15%', '10%', '10%', '10%', '10%', '5%', '5%', '15%'];
+    // const cellWidth = ['10%', '10%', '15%', '10%', '10%', '10%', '10%', '5%', '5%', '15%'];
     for (let i = 0; i < headers.length; i++) {
         const cell = document.createElement('th');
         cell.setAttribute('scope', 'col');

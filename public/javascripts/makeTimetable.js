@@ -9,11 +9,11 @@ function makeTimetable(tbl, musicPrograms) {
         }
 
         // Check and delete duplicates
-        const trimmedTimeArray = [];
+        const removedDuplicatesArray = [];
         let index = 0;
         for (let i = 0; i < getTimes.length - 1; i++) {
             if (getTimes[i] !== getTimes[i + 1]) {
-                trimmedTimeArray[index] = getTimes[i];
+                removedDuplicatesArray[index] = getTimes[i];
                 index++;
             }
         }
@@ -21,39 +21,33 @@ function makeTimetable(tbl, musicPrograms) {
         // Sort into new array
         const sortedArray = [];
 
-        for (let time of trimmedTimeArray) {
-            if (time.length === 6 && time.endsWith('am')) {
+        for (let time of removedDuplicatesArray) {
+            if (time.endsWith('AM')) {
                 sortedArray.push(time);
             }
         }
 
-        for (let time of trimmedTimeArray) {
-            if (time.length === 7 && time.endsWith('am')) {
+        for (let time of removedDuplicatesArray) {
+            if (time.endsWith('PM')) {
                 sortedArray.push(time);
             }
         }
 
-        for (let time of trimmedTimeArray) {
-            if (time.length === 7 && time.endsWith('pm') && time.startsWith('12')) {
-                sortedArray.push(time);
-            }
-        }
-
-        for (let time of trimmedTimeArray) {
-            if (time.length === 6 && time.endsWith('pm')) {
-                sortedArray.push(time);
-            }
-        }
-
+        // Remove zeroes from time strings
+        // for (let i = 0; i < sortedArray.length; i++) {
+        //     if (sortedArray[i].startsWith('0')) {
+        //         sortedArray[i] = sortedArray[i].substring(1);
+        //     }
+        // }
+        
         return sortedArray;
     }
 
     const timeArray = makeTimeArray(musicPrograms);
-    console.log(timeArray);
 
     // Initialising the table elements
     const tblBody = document.createElement('tbody');
-    tblBody.className = 'table-group-divider';
+    tblBody.className = '';
     const tblHead = document.createElement('thead');
     tblHead.className = '';
     const tblHeadRow = document.createElement('tr');
@@ -63,9 +57,10 @@ function makeTimetable(tbl, musicPrograms) {
     const daysArray = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     for (let i = 0; i < daysArray.length; i++) {
         const cell = document.createElement('th');
+        cell.className = 'text-xl py-2 bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100';
         cell.setAttribute('scope', 'col');
         const cellText = document.createTextNode(`${daysArray[i]}`);
-        cell.setAttribute('style', 'width: 200px;');
+        cell.setAttribute('style', 'width: 200px;'); // This might be better with .classList and CSS.
         cell.appendChild(cellText);
         tblHeadRow.appendChild(cell);
     }
@@ -76,22 +71,25 @@ function makeTimetable(tbl, musicPrograms) {
     // Looping through all of the rows
     for (let row = 0; row < timeArray.length; row++) {
         const tblRow = document.createElement('tr');
+        tblRow.className = 'bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100';
 
         for (let col = 0; col < daysArray.length; col++) {
             if (col === 0) {
                 // Setting the first column to display the time each row
                 const cell = document.createElement('th');
-                cell.setAttribute('scope', 'row');
+                cell.className = 'text-sm text-center text-gray-900 font-light px-6 py-4 whitespace-nowrap';
                 cell.innerHTML = `${timeArray[row]}`;
                 tblRow.appendChild(cell);
             } else {
                 // Displaying programs if they exist, otherwise left empty
                 const cell = document.createElement('td');
+                cell.className = 'text-sm text-center text-gray-900 font-light px-6 py-4 whitespace-nowrap';
                 for (let musicProgram of musicPrograms) {
                     if (musicProgram.day === daysArray[col]) {
                         if (musicProgram.time === timeArray[row]) {
                             cell.innerHTML = `
-                                <p><strong>${musicProgram.title}</strong><br>
+                                <p> <a href="/admin/music_program/${musicProgram._id}/edit" 
+                                class="font-semibold underline text-blue-500">${musicProgram.title}</a><br>
                                 Teacher: ${musicProgram.teacher}<br>
                                 Duration: ${musicProgram.duration}</p>`;
                         }

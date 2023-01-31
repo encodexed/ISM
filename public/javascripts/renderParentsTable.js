@@ -2,7 +2,7 @@ function renderParentsTable(tbl, parents) {
 
     // Initialising the table elements
     const tblBody = document.createElement('tbody');
-    tblBody.className = 'table-group-divider';
+    tblBody.className = '';
     const tblHead = document.createElement('thead');
     tblHead.className = '';
     const tblHeadRow = document.createElement('tr');
@@ -10,7 +10,7 @@ function renderParentsTable(tbl, parents) {
 
     // Creating the header row
     const headers = ['Last Name', 'First Name', 'Email', 'Contact', 'Dependents', 'Notes', 'Actions'];
-    const cellWidth = ['15%', '15%', '15%', '10%', '15%', '15%', '15%'];
+    // const cellWidth = ['15%', '15%', '15%', '10%', '15%', '15%', '15%'];
     for (let i = 0; i < headers.length; i++) {
         const cell = document.createElement('th');
         cell.setAttribute('scope', 'col');

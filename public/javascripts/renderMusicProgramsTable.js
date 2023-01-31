@@ -2,7 +2,7 @@ function renderMusicProgramsTable(tbl, musicPrograms) {
 
     // Initialising the table elements
     const tblBody = document.createElement('tbody');
-    tblBody.className = 'table-group-divider';
+    tblBody.className = '';
     const tblHead = document.createElement('thead');
     tblHead.className = '';
     const tblHeadRow = document.createElement('tr');
@@ -10,7 +10,7 @@ function renderMusicProgramsTable(tbl, musicPrograms) {
 
     // Creating the header row
     const headers = ['Program', 'Day', 'Time', 'Duration', 'Teacher', 'Room', 'Students', 'Notes', 'Actions'];
-    const cellWidth = ['10%', '10%', '10%', '10%', '10%', '5%', '15%', '15%', '15%'];
+    // const cellWidth = ['10%', '10%', '10%', '10%', '10%', '5%', '15%', '15%', '15%'];
     for (let i = 0; i < headers.length; i++) {
         const cell = document.createElement('th');
         cell.setAttribute('scope', 'col');

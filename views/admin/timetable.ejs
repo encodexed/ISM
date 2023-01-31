@@ -1,15 +1,23 @@
-<% layout('layouts/admin-boilerplate') %> 
-
+<% layout('layouts/admin-boilerplate') %>
 <div class="text-center">
-    <h1>Admin Timetable</h1>
-    <p>Admins can adjust the timetable here.</p>
+    <h1 class="text-4xl underline pt-5">Timetable</h1>
+    <p class="text-sm mt-3">
+        This is the overall timetable for all music programs listed in the music 
+        programs database. EVENTUALLY THIS TIMETABLE WILL BE SPLIT BY ROOM.
+    </p>
 </div>
 
-<table id="adminTimetable" class="table table-hover table-responsive w-auto" style="border: 2px solid black">
-    <!-- javascript appends here -->
-</table>
-
-<script src="/javascripts/makeTimetable.js" type="text/javascript"></script>
-<script> makeTimetable(document.getElementById('adminTimetable'), 
-    <%-JSON.stringify(musicPrograms)%>);
-</script>
+<div class="flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 pt-5">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+                <table id="adminTimetable" class="min-w-full">
+                    <script src="/javascripts/makeTimetable.js" type="text/javascript"></script>
+                    <script> makeTimetable(document.getElementById('adminTimetable'), 
+                        <%-JSON.stringify(musicPrograms)%>);
+                    </script>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
