@@ -94,23 +94,20 @@ module.exports.updateMusicProgram = async (req, res) => {
 }
 
 module.exports.renderEditMusicProgram = async (req, res) => {
-    const musicProgram = await MusicProgram.findById(req.params.id);
-    if(!musicProgram){
-        req.flash('error', 'Music Program not found.');
-        res.redirect('/admin/music_program/index');
-    }
-    res.render('admin/music_program/edit', { musicProgram });
-}
-
-module.exports.renderManageStudents = async (req, res) => {
     const musicProgram = await MusicProgram.findById(req.params.id)
-        .populate('enrolled');
-    const students = await Student.find({});
+    .populate({
+        path: 'enrolled',
+        populate: {
+            path: 'parent'
+        }
+    });
+    const students = await Student.find({})
+        .populate('course');
     if(!musicProgram){
         req.flash('error', 'Music Program not found.');
         res.redirect('/admin/music_program/index');
     }
-    res.render('admin/music_program/manage_students', { musicProgram, students });
+    res.render('admin/music_program/edit', { musicProgram, students });
 }
 
 module.exports.enrolStudent = async (req, res) => {
@@ -126,7 +123,7 @@ module.exports.enrolStudent = async (req, res) => {
     let studentFound = false;
     if (students.length === 0) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${musicProgram._id}/enrol_students`);
+        return res.redirect(`/admin/music_program/${musicProgram._id}/edit`);
     } else if (students.length === 1) {
         student = students[0];
         studentFound = true;
@@ -141,7 +138,7 @@ module.exports.enrolStudent = async (req, res) => {
     }
     if (!studentFound) {
         req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${musicProgram._id}/enrol_students`);
+        return res.redirect(`/admin/music_program/${musicProgram._id}/edit`);
     }
     student.course = musicProgram;
     await student.save();
@@ -149,39 +146,18 @@ module.exports.enrolStudent = async (req, res) => {
     await musicProgram.save();
     req.flash('success', `Successfully enrolled ${firstName} ${lastName} 
         in ${musicProgram.title}, ${musicProgram.day} ${musicProgram.time}`);
-    res.redirect(`/admin/music_program/${id}/enrol_students`);
+    res.redirect(`/admin/music_program/${id}/edit`);
 }
 
 module.exports.unenrolStudent = async (req, res) => {
 
-    const { id } = req.params;
-    const { firstName, lastName } = req.body.student;
-    const family = await Student.find({ lastName: `${lastName}` });
-    let student = {};
-    let studentFound = false;
-
-    if (family.length === 0) {
-        req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${id}/enrol_students`);
-    } else {
-        for (let i = 0; i < family.length; i++) {
-            if (family[i].firstName === firstName) {
-                student = family[i];
-                studentFound = true;
-                break;
-            }
-        }
-    }
-    if (!studentFound) {
-        req.flash('error', 'Student not found.');
-        return res.redirect(`/admin/music_program/${id}/enrol_students`);
-    }
-
+    const { id, student_id } = req.params;
+    const student = await Student.findById(student_id);
     student.course = undefined;
     await student.save();
-    await MusicProgram.findByIdAndUpdate(id, { $pull: { enrolled: student._id } });
-    req.flash('success', `Successfully removed ${firstName} ${lastName}`)
-    res.redirect(`/admin/music_program/${id}/enrol_students`);
+    await MusicProgram.findByIdAndUpdate(id, { $pull: { enrolled: student_id } });
+    req.flash('success', `Successfully removed student from program.`)
+    res.redirect(`/admin/music_program/${id}/edit`);
 }
 
 // Parents

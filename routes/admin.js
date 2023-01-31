@@ -38,10 +38,9 @@ router.route('/music_program/:id/edit')
     .get(admin.renderEditMusicProgram);
 
 router.route('/music_program/:id/enrol_students')
-    .get(admin.renderManageStudents)
     .put(admin.enrolStudent);
 
-router.route('/music_program/:id/unenrol_student')
+router.route('/music_program/:id/unenrol_student/:student_id')
     .put(admin.unenrolStudent);
 
 // Parents
@@ -61,7 +60,6 @@ router.route('/parent/:id/edit')
     .get(admin.renderEditParent);
 
 router.route('/parent/:id/add_dependents')
-    .get(admin.renderManageDependents)
     .put(admin.addDependentToParent);
 
 router.route('/parent/:id/remove_dependents/:student_id')

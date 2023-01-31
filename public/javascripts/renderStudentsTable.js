@@ -44,7 +44,7 @@ function renderStudentsTable(tbl, students) {
         } else if (student.parent === null) {
             cellParent.innerHTML = 'DELETED';
         } else {
-            cellParent.innerHTML = `${student.parent.firstName}`;
+            cellParent.innerHTML = `${student.parent.firstName}<br>${student.parent.lastName}`;
         }
         tblRow.appendChild(cellParent);
 
