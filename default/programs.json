@@ -3,12 +3,13 @@
         "title": "Jitterbugs",
         "day": "Wednesday",
         "time": "10:45 AM",
-        "duration": "30 minutes",
+        "duration": "30",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "-"
     },
 
@@ -16,12 +17,13 @@
         "title": "Jitterbugs",
         "day": "Friday",
         "time": "10:00 AM",
-        "duration": "30 minutes",
+        "duration": "30",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "-"
     },
 
@@ -29,12 +31,13 @@
         "title": "Beeboppers",
         "day": "Monday",
         "time": "10:30 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "-"
     },
 
@@ -42,12 +45,13 @@
         "title": "Beeboppers",
         "day": "Friday",
         "time": "10:30 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "-"
     },
 
@@ -55,12 +59,13 @@
         "title": "Pianorama Primary",
         "day": "Saturday",
         "time": "11:15 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "7 places left."
     },
 
@@ -68,12 +73,13 @@
         "title": "Pianorama Juniors",
         "day": "Thursday",
         "time": "10:00 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "4 year olds, FULL."
     },
 
@@ -81,12 +87,13 @@
         "title": "Pianorama Juniors",
         "day": "Tuesday",
         "time": "11:15 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "kindergarten, FULL."
     },
 
@@ -94,12 +101,13 @@
         "title": "Pianorama Juniors",
         "day": "Tuesday",
         "time": "12:00 PM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "kindergarten, FULL."
     },
 
@@ -107,12 +115,13 @@
         "title": "Pianorama Primary",
         "day": "Monday",
         "time": "01:30 PM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "6 places left."
     },
 
@@ -120,12 +129,13 @@
         "title": "Pianorama Primary",
         "day": "Wednesday",
         "time": "09:15 AM",
-        "duration": "45 minutes",
+        "duration": "45",
         "teacher": "Mara",
         "room": "Group",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "FULL."
     },
 
@@ -133,12 +143,13 @@
         "title": "Individual Lesson",
         "day": "Tuesday",
         "time": "05:00 PM",
-        "duration": "30 minutes",
+        "duration": "30",
         "teacher": "Robbie",
         "room": "1",
         "enrolled": {
 
         },
+        "maxCapacity": "10",
         "notes": "3rd grade piano for leisure."
     }
 ]

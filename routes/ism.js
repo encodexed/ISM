@@ -50,5 +50,8 @@ router.route('/staff')
     
 router.route('/success')
     .get(ism.renderSuccess);
+
+router.route('/timetable')
+    .get(ism.renderTimetable);
     
 module.exports = router;

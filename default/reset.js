@@ -34,6 +34,7 @@ const resetAll = async () => {
             teacher: `${programs[i].teacher}`,
             room: `${programs[i].room}`,
             enrolled: [],
+            maxCapacity: `${programs[i].maxCapacity}`,
             notes: `${programs[i].notes}`
         })
         await program.save();

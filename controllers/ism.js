@@ -1,6 +1,7 @@
 const Parent = require('../models/parent');
 const Student = require('../models/student');
 const Enquiry = require('../models/enquiry');
+const MusicProgram = require('../models/musicProgram');
 
 module.exports.renderAboutUs = (req, res) => {
     res.render('ism/about_us');
@@ -69,4 +70,10 @@ module.exports.renderStaff = (req, res) => {
 
 module.exports.renderSuccess = (req, res) => {
     res.render('ism/success');
+}
+
+module.exports.renderTimetable = async (req, res) => {
+    const musicPrograms = await MusicProgram.find({})
+        .sort({ "time": 1 });
+    res.render('ism/timetable', { musicPrograms });
 }

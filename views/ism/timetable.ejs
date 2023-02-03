@@ -1,0 +1,10 @@
+<% layout('layouts/boilerplate') %>
+<div class="text-center my-6">
+    <h1 class="text-3xl underline">Timetable</h1>
+    <p>You made it.</p>
+</div>
+
+<section id="public-timetable">
+    <script src="/javascripts/makePublicTimetable.js" type="text/javascript"></script>
+    <script> renderPublicTimetable(document.getElementById('public-timetable'), <%-JSON.stringify(musicPrograms)%>);</script>
+</section>

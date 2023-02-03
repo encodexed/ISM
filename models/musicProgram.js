@@ -8,10 +8,11 @@ const MusicProgramSchema = new Schema({
         enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     },
     time: String,
-    duration: String,
+    duration: Number,
     teacher: String,
     room: String,
-    enrolled: [{ type: Schema.Types.ObjectID, ref: 'Student'}],
+    enrolled: [{ type: Schema.Types.ObjectID, ref: 'Student' }],
+    maxCapacity: Number,
     notes: String
 })
 
