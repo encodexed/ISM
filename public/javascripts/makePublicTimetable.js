@@ -73,6 +73,7 @@ function renderPublicTimetable(section, musicPrograms) {
                                 link = '/ism/pianorama_primary';
                                 break;
                             default:
+                                link = '/ism/lessons_overview';
                                 baseColour = 'red';
                         }
 
@@ -83,31 +84,31 @@ function renderPublicTimetable(section, musicPrograms) {
                         program.classList.add(`row-span-${programDuration}`);
 
                         // Displaying program information
-                        let capacityText = 'No spots left';
                         let capacityColour = 'red';
+                        let hiddenButton = '';
                         const spotsLeft = musicProgram.maxCapacity - musicProgram.enrolled.length;
-                        if (spotsLeft > 2) {
-                            capacityText = 'Spots available';
+                        if (spotsLeft > 3) {
                             capacityColour = 'green'
-                        } else if (spotsLeft === 2 || spotsLeft === 1) {
-                            capacityText = 'Limited spots';
+                        } else if (spotsLeft <= 3 && spotsLeft >= 1 ) {
                             capacityColour = 'yellow'
+                        } else {
+                            hiddenButton = ' hidden';
                         }
 
                         program.innerHTML = `
                             <span class="text-sm text-center font-semibold text-slate-800">${musicProgram.title}</span>
                             <span class="text-xs text-center text-slate-600">${musicProgram.time} - ${times[i + programDuration]}</span>
                             <span class="mt-auto mx-auto text-center">
-                            <span class="text-sm uppercase font-semibold text-${capacityColour}-600">${capacityText}</span>
-                            <span class="text-xs font-semibold text-slate-600">Available spots: ${spotsLeft}</span>
-                            <a type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-${baseColour}-600/60 text-white 
-                            font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800/60 hover:shadow-lg
-                            focus:bg-${baseColour}-800/60 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 active:bg-${baseColour}-900/60 active:shadow-lg
-                            transition duration-150 ease-in-out" href="/ism/enrolment">Book</a>
-                            <a type="button" class="inline-block px-3 py-0.5 bg-${baseColour}-600/60 text-white 
-                            font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800/60 hover:shadow-lg
-                            focus:bg-${baseColour}-800/60 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 active:bg-${baseColour}-900/60 active:shadow-lg
-                            transition duration-150 ease-in-out" href="${link}">Info</a>
+                                <span class="text-xs font-semibold text-${capacityColour}-600">Available spots: ${spotsLeft}</span>
+                                <a type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-${baseColour}-600 text-white 
+                                font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800 hover:shadow-lg
+                                focus:bg-${baseColour}-800 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 
+                                active:bg-${baseColour}-900 active:shadow-lg transition duration-150 ease-in-out${hiddenButton}" 
+                                href="/ism/enrolment?_program='${musicProgram.title}'&day='${musicProgram.day}'&time='${musicProgram.time}'">Book</a>
+                                <a type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-${baseColour}-600 text-white 
+                                font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800 hover:shadow-lg
+                                focus:bg-${baseColour}-800 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 
+                                active:bg-${baseColour}-900 active:shadow-lg transition duration-150 ease-in-out" href="${link}">Info</a>
                             </span>
                         `
                         timetable.appendChild(program);

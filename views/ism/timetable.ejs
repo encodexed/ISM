@@ -1,10 +1,29 @@
 <% layout('layouts/boilerplate') %>
-<div class="text-center my-6">
-    <h1 class="text-3xl underline">Timetable</h1>
-    <p>You made it.</p>
-</div>
+<div class="mb-auto">
+    <section class="mb-auto">
+        <%- include('../partials/header-image') %>
+    </section>
 
-<section id="public-timetable">
-    <script src="/javascripts/makePublicTimetable.js" type="text/javascript"></script>
-    <script> renderPublicTimetable(document.getElementById('public-timetable'), <%-JSON.stringify(musicPrograms)%>);</script>
-</section>
+    <div class="max-w-6xl mx-auto">
+        <section class="mx-4 sm:mx-12 md:mx-20 lg:mx-32">
+            <div class="text-center mb-6">
+                <h1 class="mt-12 mb-3 text-4xl font-extrabold leading-none tracking-tight text-grey-900 md:text-5xl lg:text-6xl">Book In</h1>
+                <p class="mb-6 text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 font-medium">
+                    Booking in is as easy as <span class="text-blue-600 font-semibold">picking a time</span> and 
+                    <span class="text-blue-600 font-semibold">entering your details</span>.<br>Select 'Info' to learn more about a program.</p>
+        </section>
+    </div>
+
+    <section id="public-timetable">
+        <script src="/javascripts/makePublicTimetable.js" type="text/javascript"></script>
+        <script> renderPublicTimetable(document.getElementById('public-timetable'), <%-JSON.stringify(musicPrograms)%>);</script>
+    </section>
+
+    <div class="mt-6 text-center">
+        <a type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white 
+        font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-800 hover:shadow-lg
+        focus:bg-purple-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-900 active:shadow-lg
+        transition duration-150 ease-in-out" href="#">Return to top</a>
+    </div>
+    
+</div>
