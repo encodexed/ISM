@@ -18,7 +18,8 @@ router.route('/creative_kids')
     .get(ism.renderCreativeKids);
 
 router.route('/enrol/:id')
-    .get(ism.renderEnrolment);
+    .get(ism.renderEnrolment)
+    .post(ism.enrolStudent);
 
 router.route('/enrolment')
     .post(ism.createEnquiry);

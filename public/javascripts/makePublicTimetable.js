@@ -82,7 +82,7 @@ function renderPublicTimetable(section, musicPrograms) {
                         let hiddenButton = '';
                         const spotsLeft = musicProgram.maxCapacity - musicProgram.enrolled.length;
                         if (spotsLeft > 3) {
-                            capacityColour = 'green'
+                            capacityColour = 'blue'
                         } else if (spotsLeft <= 3 && spotsLeft >= 1 ) {
                             capacityColour = 'yellow'
                         } else {
@@ -94,10 +94,10 @@ function renderPublicTimetable(section, musicPrograms) {
                             <span class="text-xs text-center text-slate-600">${musicProgram.time} - ${times[i + programDuration]}</span>
                             <span class="mt-auto mx-auto text-center">
                                 <span class="text-xs font-semibold text-${capacityColour}-600">Available spots: ${spotsLeft}</span>
-                                <a href="/ism/enrol/${musicProgram._id}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-purple-600 text-white font-medium text-xs 
-                                leading-tight uppercase rounded-full hover:cursor-pointer shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700
-                                focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">Book</a>
-                                <a href="${link}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-yellow-300 font-medium text-xs text-gray-700
+                                <a href="/ism/enrol/${musicProgram._id}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-blue-600 text-white font-medium text-xs 
+                                leading-tight uppercase rounded-full hover:cursor-pointer shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700
+                                focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out${hiddenButton}">Book</a>
+                                <a href="${link}" type="button" class="mt-1 mb-0.5 inline-block px-3 py-0.5 bg-yellow-300 font-medium text-xs text-gray-700
                                 leading-tight uppercase rounded-full hover:cursor-pointer shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-yellow-400
                                 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-500 active:shadow-lg transition duration-150 ease-in-out">Info</a>
                             </span>

@@ -1,131 +1,208 @@
 <% layout('layouts/boilerplate') %>
+    <section class="mb-auto">
+        <%- include('../partials/header-image') %>
+    </section>
+    <div class="max-w-6xl mx-auto">
+        <section class="mx-4 sm:mx-12 md:mx-20 lg:mx-32">
+            <div class="text-center mb-6">
+                <h1
+                    class="mt-12 mb-3 text-4xl font-extrabold leading-none tracking-tight text-grey-900 md:text-5xl lg:text-6xl dark:text-white">
+                    Enrolment Form
+                </h1>
+                <p class="mb-6 text-lg md:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 font-medium">
+                    Enter your personal details here, and the details of the student being enrolled. Make sure you have
+                    selected the correct course. If you have any issues, please do not hesitate to 
+                    <span class="text-blue-600 font-semibold underline">contact us</span>.
+                </p>
+        </section>
 
-    <div class="text-center mb-5">
-        <h1>Enrolment Form</h1>
-        <p><b>Like one of our programs?</b></p>
-        <p><b>Complete the enrolment form to make a booking.</b></p>
+        <div class="flex my-10">
+            <div class="flex-1 mx-5">
+                <div class="flex justify-center">
+                    <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                        <img class="rounded-t-lg"
+                            src="https://images.unsplash.com/photo-1629360067822-89c74b25bb66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+                            alt="" />
+                        <div class="p-6 text-center">
+                            <h2 class="text-gray-900 text-2xl font-medium mb-2 text-blue-600">
+                                You are enrolling in...
+                            </h2>
+                            <div class="flex font-semibold mb-4">
+                                <div class="flex-1 text-right mr-0.5">
+                                    <p class="text-red-600">
+                                        Music Program: <br>
+                                        Day: <br>
+                                        Time: <br>
+                                        Duration: <br>
+                                        Teacher:
+                                    </p>
+                                </div>
+                                <div class="flex-1 text-left ml-0.5">
+                                    <p>
+                                        <%= musicProgram.title %><br>
+                                        <%= musicProgram.day %><br>
+                                        <%= musicProgram.time %><br>
+                                        <%= musicProgram.duration %> minutes<br>
+                                        <%= musicProgram.teacher %>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-gray-300">
+                                <h2 class="text-gray-900 text-2xl font-medium mb-2 text-blue-600 mt-12">
+                                    Parent's Personal Information
+                                </h2>
+                            </div>
+                            <div class="my-5">
+                                <form action="/ism/enrol/<%= musicProgram._id %>" method="POST" novalidate class="needs-validation">
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="parentFirstName"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">First
+                                                Name</label>
+                                            <input type="text"
+                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                id="parentFirstName" placeholder="First Name" name="parent[firstName]"
+                                                required />
+                                            <div class="invalid-feedback">
+                                                Please enter a valid first name.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="parentLastName"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">Last
+                                                Name</label>
+                                            <input type="text"
+                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                id="parentLastName" placeholder="Last Name" name="parent[lastName]"
+                                                required />
+                                            <div class="invalid-feedback">
+                                                Please enter a valid last name.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="email"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">Email
+                                            </label>
+                                            <input type="email"
+                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                type="email" id="email" placeholder="Email" name="parent[email]"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Parent requires a valid email.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="contactNumber"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">Contact
+                                                Number</label>
+                                            <input type="text" pattern="^[0-9]+$"
+                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                id="contactNumber" minlength="8" placeholder="Contact number"
+                                                name="parent[contactNumber]" required />
+                                            <div class="invalid-feedback">
+                                                Parent requires a valid contact number.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-12">
+                                        <h2 class="text-gray-900 text-2xl font-medium text-blue-600 mb-2 mt-4">
+                                            Student's Personal Information
+                                        </h2>
+                                    </div>
+
+                                    <div class="flex justify-center mt-5">
+                                        <div class="mb-3 w-full">
+                                            <label for="studentFirstName"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">First
+                                                Name</label>
+                                            <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="studentFirstName" placeholder="First Name" name="student[firstName]"
+                                                required />
+                                            <div class="invalid-feedback">
+                                                Student requires a valid first name.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="lastName"
+                                                class="form-label inline-block mb-2 text-gray-700 font-semibold">Last
+                                                Name</label>
+                                            <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="lastName" placeholder="Last Name" name="student[lastName]" required />
+                                            <div class="invalid-feedback">
+                                                Student requires a valid lastName.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-center">
+                                        <div class="datepicker relative form-control mb-3 w-full" data-mdb-toggle-button="false">
+                                            <label for="date-of-birth" class="form-label inline-block text-gray-700 font-semibold mb-2">Date of Birth</label>
+                                            <input class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="date-of-birth" type="text" data-mdb-toggle="datepicker" name="student[dateOfBirth]" placeholder="Date of Birth" pattern="^\d\d/\d\d/\d\d\d\d$" required/>
+                                            <div class="invalid-feedback">
+                                                Student requires a valid birthday.
+                                            </div>
+                                            <small class="block mt-1 text-xs text-gray-600">Format: dd/mm/yyyy</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="gender" class="form-label inline-block mb-2 text-gray-700 font-semibold">Gender</label>
+                                            <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Gender dropdown menu" id="gender" name="student[gender]" required>
+                                                <option selected disabled value="">Select an option</option>
+                                                <option id="Male" value="Male">Male</option>
+                                                <option id="Female" value="Female">Female</option>
+                                                <option id="Other" value="Other">Other</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select a valid gender.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-12">
+                                        <h2 class="text-gray-900 text-2xl font-medium text-blue-600 mb-2 mt-4">
+                                            Additional Information
+                                        </h2>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="mb-3 w-full">
+                                            <label for="notes"
+                                                class="form-label inline-block mb-2 mt-4 text-gray-700 font-semibold">Message</label>
+                                            <textarea name="parent[notes]"
+                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                                id="notes" rows="3" placeholder="Message (optional)"></textarea>
+                                            <small class="block mt-1 text-xs text-gray-600">Information about <strong
+                                                    class="fond-semibold">prior learning/grades, medical conditions,
+                                                    learning difficulties, etc.</strong> would be good information to
+                                                include.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex space-x-2 justify-center mt-5">
+                                        <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+                                    text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
+                                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
+                                    active:shadow-lg transition duration-150 ease-in-out">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <form action="/programs/enrolment" method="POST" novalidate class="needs-validation">
-        <div class="card p-5 container col-md-6 offset-md-3 mb-3">
-            <h2 class="mb-3">Parent/Guardian Details</h2>
-            <p>Tell us about yourself, or the primary contact for the student.</p>
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="parentFirstName" name="enquiry[parentFirstName]" placeholder="Parent First Name"
-                    required autofocus>
-                <div class="invalid-feedback">
-                    Please enter a first name.
-                </div>
-                <label class="form-label" for="parentFirstName">First Name</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="parentLastName" name="enquiry[parentLastName]" placeholder="Parent Last Name"
-                    required>
-                <div class="invalid-feedback">
-                    Please enter a last name.
-                </div>
-                <label class="form-label" for="parentLastName">Last Name</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="email" id="email" name="enquiry[email]" placeholder="Email" required>
-                <div class="invalid-feedback">
-                    Please enter a valid email address.
-                </div>
-                <label class="form-label" for="email">Email Address</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="tel" id="contactNumber" name="enquiry[contactNumber]"
-                    placeholder="Contact Number" required>
-                <div class="invalid-feedback">
-                    Please enter a contact phone number, preferably a mobile number.
-                </div>
-                <label class="form-label" for="contactNumber">Contact Number</label>
-            </div>
-        </div>
-
-        <div class="card p-5 container col-md-6 offset-md-3 mb-3">
-            <h2 class="mb-3">Student Details</h2>
-            <p>Tell us about the student.</p>
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="studentFirstName" name="enquiry[studentFirstName]"
-                    placeholder="Student's First Name" required>
-                <div class="invalid-feedback">
-                    Please enter a first name.
-                </div>
-                <label class="form-label" for="studentFirstName">First Name</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="studentLastName" name="enquiry[studentLastName]"
-                    placeholder="Student's Last Name" required>
-                <div class="invalid-feedback">
-                    Please enter a last name.
-                </div>
-                <label class="form-label" for="studentLastName">Last Name</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="date" value="1970-01-01" id="dateOfBirth" name="enquiry[dateOfBirth]"
-                    placeholder="Date of Birth">
-                <label class="form-label" for="dateOfBirth">Date of Birth</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <select class="form-select" id="gender" aria-label="Gender dropdown menu" name="enquiry[gender]"
-                    required>
-                    <option selected disabled value="">---</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Other">Other</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please choose an option.
-                </div>
-                <label class="form-label" for="gender">Gender</label>
-            </div>
-
-            <div class="row form-floating mb-3">
-                <textarea class="form-control" placeholder="Additional info" id="additionalInfo" style="height: 150px"
-                    name="enquiry[notes]"></textarea>
-                <label class="form-label" for="additionalInfo">Comments (optional)</label>
-                <p class="mt-3">Leave any additional information here (prior learning/grades, medical conditions,
-                    learning
-                    difficulties, etc.)</p>
-            </div>
-        </div>
-
-        <div class="card p-5 container col-md-6 offset-md-3 mb-3">
-            <h2>Music Program</h2>
-            <p>Tell us about which program you are most interested in.</p>
-            <div class="row form-floating mb-3">
-                <select class="form-select" id="programSelect" aria-label="Program selection dropdown menu"
-                    name="enquiry[desiredMusicProgram]" required>
-                    <option selected disabled value="">---</option>
-                    <option value="Jitterbugs">Jitterbugs</option>
-                    <option value="Beeboppers">Beeboppers</option>
-                    <option value="Pianorama Juniors">Pianorama Juniors</option>
-                    <option value="Pianorama Primary">Pianorama Primary</option>
-                    <option value="Individual Lessons">Individual Lessons</option>
-                    <option value="Adult Lessons">Adult Lessons</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a program.
-                </div>
-                <label class="form-label" for="programSelect">Program</label>
-            </div>
-
-            <!-- Section needs work -->
-            <div class="row form-floating mb-3">
-                <input class="form-control" type="text" id="timeSelect" name="enquiry[preferredTime]" required>
-                <label class="form-label" for="timeSelect">Preferred time</label>
-            </div>
-
-            <div class="row mt-3">
-                <button class="btn btn-primary">Enrol</button>
-            </div>
-            <!-- document.getElementById("divid").style.display="none"; -->
-        </div>
-    </form>

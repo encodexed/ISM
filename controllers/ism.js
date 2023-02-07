@@ -28,9 +28,13 @@ module.exports.renderEnrolment = async (req, res) => {
     res.render('ism/enrolment', { musicProgram });
 }
 
+module.exports.enrolStudent = (req, res) => {
+    res.send(req.body);
+}
+ 
 // Needs a fix.
 module.exports.createEnquiry = (req, res) => {
-    res.send(body);
+    res.send(req.body);
 }
 
 module.exports.renderFAQ = (req, res) => {
