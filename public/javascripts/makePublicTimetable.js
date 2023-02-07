@@ -53,31 +53,25 @@ function renderPublicTimetable(section, musicPrograms) {
                         program.className = `row-start-[${i + 2}] col-start-[${j + 1}] rounded-lg m-1 p-1 flex flex-col bg-white`;
 
                         // Determine colour theme of program
-                        let baseColour = '';
                         let link = '/ism/jitterbugs';
                         switch (musicProgram.title) {
                             case 'Jitterbugs':
-                                baseColour = 'pink';
                                 link = '/ism/jitterbugs';
                                 break;
                             case 'Beeboppers':
-                                baseColour = 'yellow';
                                 link = '/ism/beeboppers';
                                 break;
                             case 'Pianorama Juniors':
-                                baseColour = 'purple';
                                 link = '/ism/pianorama_juniors';
                                 break;
                             case 'Pianorama Primary':
-                                baseColour = 'blue';
                                 link = '/ism/pianorama_primary';
                                 break;
                             default:
                                 link = '/ism/lessons_overview';
-                                baseColour = 'red';
                         }
 
-                        program.classList.add('shadow-md', `shadow-slate-600`, 'border', 'border-2', `border-${baseColour}-700`);
+                        program.classList.add('shadow-md', `shadow-slate-600`, 'border', 'border-2', `border-slate-300`);
 
                         // Calculating row-span based on program duration
                         const programDuration = musicProgram.duration / 15;
@@ -100,15 +94,12 @@ function renderPublicTimetable(section, musicPrograms) {
                             <span class="text-xs text-center text-slate-600">${musicProgram.time} - ${times[i + programDuration]}</span>
                             <span class="mt-auto mx-auto text-center">
                                 <span class="text-xs font-semibold text-${capacityColour}-600">Available spots: ${spotsLeft}</span>
-                                <a type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-${baseColour}-600 text-white 
-                                font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800 hover:shadow-lg
-                                focus:bg-${baseColour}-800 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 
-                                active:bg-${baseColour}-900 active:shadow-lg transition duration-150 ease-in-out${hiddenButton}" 
-                                href="/ism/enrolment?_program='${musicProgram.title}'&day='${musicProgram.day}'&time='${musicProgram.time}'">Book</a>
-                                <a type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-${baseColour}-600 text-white 
-                                font-medium text-xs leading-tight rounded-full shadow-md hover:bg-${baseColour}-800 hover:shadow-lg
-                                focus:bg-${baseColour}-800 focus:shadow-lg border border-${baseColour}-700 focus:outline-none focus:ring-0 
-                                active:bg-${baseColour}-900 active:shadow-lg transition duration-150 ease-in-out" href="${link}">Info</a>
+                                <a href="/ism/enrol/${musicProgram._id}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-purple-600 text-white font-medium text-xs 
+                                leading-tight uppercase rounded-full hover:cursor-pointer shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700
+                                focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">Book</a>
+                                <a href="${link}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-yellow-300 font-medium text-xs text-gray-700
+                                leading-tight uppercase rounded-full hover:cursor-pointer shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-yellow-400
+                                focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-500 active:shadow-lg transition duration-150 ease-in-out">Info</a>
                             </span>
                         `
                         timetable.appendChild(program);
