@@ -23,8 +23,9 @@ module.exports.renderCreativeKids = (req, res) => {
     res.render('ism/creative_kids')
 }
 
-module.exports.renderEnrolment = (req, res) => {
-    res.render('ism/enrolment');
+module.exports.renderEnrolment = async (req, res) => {
+    const musicProgram = await MusicProgram.findById(req.params.id);
+    res.render('ism/enrolment', { musicProgram });
 }
 
 // Needs a fix.
@@ -56,8 +57,8 @@ module.exports.renderLessonsOverview = (req, res) => {
     res.render('ism/lessons_overview');
 }
 
-module.exports.renderPianoramaJunior = (req, res) => {
-    res.render('ism/pianorama_junior');
+module.exports.renderPianoramaJuniors = (req, res) => {
+    res.render('ism/pianorama_juniors');
 }
 
 module.exports.renderPianoramaPrimary = (req, res) => {

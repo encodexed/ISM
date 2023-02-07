@@ -17,8 +17,10 @@ router.route('/covid_19_policies')
 router.route('/creative_kids')
     .get(ism.renderCreativeKids);
 
+router.route('/enrol/:id')
+    .get(ism.renderEnrolment);
+
 router.route('/enrolment')
-    .get(ism.renderEnrolment)
     .post(ism.createEnquiry);
 
 router.route('/faq')
@@ -39,8 +41,8 @@ router.route('/jobs')
 router.route('/lessons_overview')
     .get(ism.renderLessonsOverview);
 
-router.route('/pianorama_junior')
-    .get(ism.renderPianoramaJunior);
+router.route('/pianorama_juniors')
+    .get(ism.renderPianoramaJuniors);
 
 router.route('/pianorama_primary')
     .get(ism.renderPianoramaPrimary);
