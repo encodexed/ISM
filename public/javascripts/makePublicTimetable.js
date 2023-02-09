@@ -1,5 +1,18 @@
 function renderPublicTimetable(section, musicPrograms) {
 
+    /* DO NOT DELETE
+    
+    Tailwind dynamic classes force-build:
+
+    col-start-[1] col-start-[2] col-start-[3] col-start-[4] col-start-[5] col-start-[6] col-start-[7] col-start-[8]
+    row-start-[1] row-start-[2] row-start-[3] row-start-[4] row-start-[5] row-start-[6] row-start-[7] row-start-[8] row-start-[9] row-start-[10]
+    row-start-[11] row-start-[12] row-start-[13] row-start-[14] row-start-[15] row-start-[16] row-start-[17] row-start-[18] row-start-[19] row-start-[20]
+    row-start-[21] row-start-[22] row-start-[23] row-start-[24] row-start-[25] row-start-[26] row-start-[27] row-start-[28] row-start-[29] row-start-[30]
+    row-start-[31] row-start-[32] row-start-[33] row-start-[34] row-start-[35] row-start-[36] row-start-[37] row-start-[38] row-start-[39] row-start-[40]
+    row-start-[41] row-start-[42] row-start-[43] row-start-[44] row-start-[45] row-start-[46] row-start-[47] row-start-[48] row-start-[49] row-start-[50]
+
+    */
+
     // Creating the timetable frame
     const timetable = document.createElement('div');
     timetable.className = 'overflow-scroll p-6 mx-4 lg:mx-auto bg-white overflow-hidden rounded-xl shadow-xl grid grid-cols-[100px,repeat(6,150px)] grid-rows-[auto,repeat(49,60px)] max-w-[1050px]';
@@ -52,7 +65,7 @@ function renderPublicTimetable(section, musicPrograms) {
                         const program = document.createElement('div');
                         program.className = `row-start-[${i + 2}] col-start-[${j + 1}] rounded-lg m-1 p-1 flex flex-col bg-white`;
 
-                        // Determine colour theme of program
+                        // Give info link to programs
                         let link = '/ism/jitterbugs';
                         switch (musicProgram.title) {
                             case 'Jitterbugs':
@@ -74,8 +87,13 @@ function renderPublicTimetable(section, musicPrograms) {
                         program.classList.add('shadow-md', `shadow-slate-600`, 'border', 'border-2', `border-slate-300`);
 
                         // Calculating row-span based on program duration
-                        const programDuration = musicProgram.duration / 15;
-                        program.classList.add(`row-span-${programDuration}`);
+                        if (musicProgram.duration === 60) {
+                            program.classList.add('row-span-4');
+                        } else if (musicProgram.duration === 45) {
+                            program.classList.add('row-span-3');
+                        } else {
+                            program.classList.add('row-span-2');
+                        }
 
                         // Displaying program information
                         let capacityColour = 'red';
@@ -91,7 +109,7 @@ function renderPublicTimetable(section, musicPrograms) {
 
                         program.innerHTML = `
                             <span class="text-sm text-center font-semibold text-slate-800">${musicProgram.title}</span>
-                            <span class="text-xs text-center text-slate-600">${musicProgram.time} - ${times[i + programDuration]}</span>
+                            <span class="text-xs text-center text-slate-600">${musicProgram.time} - ${times[i + (musicProgram.duration / 15)]}</span>
                             <span class="mt-auto mx-auto text-center">
                                 <span class="text-xs font-semibold text-${capacityColour}-600">Available spots: ${spotsLeft}</span>
                                 <a href="/ism/enrol/${musicProgram._id}" type="button" class="mb-0.5 inline-block px-3 py-0.5 bg-blue-600 text-white font-medium text-xs 

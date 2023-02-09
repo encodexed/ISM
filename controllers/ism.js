@@ -78,7 +78,7 @@ module.exports.renderSuccess = (req, res) => {
 }
 
 module.exports.renderTimetable = async (req, res) => {
-    const musicPrograms = await MusicProgram.find({})
+    const musicPrograms = await MusicProgram.find({}, '_id title day time duration enrolled maxCapacity')
         .sort({ "time": 1 });
     res.render('ism/timetable', { musicPrograms });
 }

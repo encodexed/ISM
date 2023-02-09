@@ -6,21 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISM Leichhardt</title>
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
+  <link href="/dist/output.css" rel="stylesheet">
 </head>
 
 <body class="bg-violet-50 flex flex-col h-screen">
@@ -35,6 +21,7 @@
     <%- include('../partials/footer') %>
   </footer>
   <script src='/javascripts/validateForms.js'></script>
+  <!-- <script src="/node_modules/tw-elements/dist/js/index.min.js"></script> ...this just doesn't work for me and I don't know why... -->
   <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </body>
 
